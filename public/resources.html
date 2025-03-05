@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-12 text-center" data-aos="fade-down" data-aos-delay="150">
                     <div class="section-title">
-                        <h1 class="display-4 fw-semibold">TEST </h1>
+                        <h1 class="display-4 fw-semibold">Resources</h1>
                         <div class="line"></div>
                         <p>We love to craft digital experiences for brands rather than crap and more lorem ipsums and do crazy skills</p>
                     </div>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="interestRate" class="form-label">Annual Interest Rate (%)</label>
-                            <input type="number" class="form-control" id="interestRate" placeholder="Enter interest rate" required>
+                            <input type="number" class="form-control" id="interestRate" placeholder="Enter interest rate" step="any" required>
                             <div class="invalid-feedback" id="interestRateFeedback">Please enter a valid interest rate.</div>
                         </div>
                         <div class="mb-3">
@@ -107,6 +107,25 @@
     <script src="./assets/js/main.js"></script>
 
     <script>
+        // ADDED: Restrict input values only after form submission (no real-time correction)
+        const limits = {
+            loanAmount: { min: 100, max: 10000000 },
+            interestRate: { min: 0.1, max: 50 },
+            loanTerm: { min: 1, max: 50 }
+        };
+
+        // ADDED: Function to validate inputs and show errors
+        function validateInput(id, value, min, max) {
+            if (isNaN(value) || value < min || value > max) {
+                document.getElementById(id).classList.add('is-invalid');
+                document.getElementById(id + "Feedback").innerText = `Value is invalid. Please enter a valid amount.`;
+                return false;
+            } else {
+                document.getElementById(id).classList.remove('is-invalid');
+                return true;
+            }
+        }
+
         // Function to calculate the monthly payment
         function calculateLoanPayment(principal, interestRate, years) {
             // Convert annual interest rate to a monthly rate
@@ -133,35 +152,19 @@
         document.getElementById('calculator-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Get input values
             const loanAmount = parseFloat(document.getElementById('loanAmount').value);
             const interestRate = parseFloat(document.getElementById('interestRate').value);
             const loanTerm = parseFloat(document.getElementById('loanTerm').value);
 
-            // Validate inputs
             let valid = true;
-            if (isNaN(loanAmount) || loanAmount <= 0) {
-                document.getElementById('loanAmount').classList.add('is-invalid');
-                valid = false;
-            } else {
-                document.getElementById('loanAmount').classList.remove('is-invalid');
-            }
-            if (isNaN(interestRate) || interestRate <= 0) {
-                document.getElementById('interestRate').classList.add('is-invalid');
-                valid = false;
-            } else {
-                document.getElementById('interestRate').classList.remove('is-invalid');
-            }
-            if (isNaN(loanTerm) || loanTerm <= 0) {
-                document.getElementById('loanTerm').classList.add('is-invalid');
-                valid = false;
-            } else {
-                document.getElementById('loanTerm').classList.remove('is-invalid');
-            }
 
-            if (!valid) {
-                return;
-            }
+            // ADDED: Validate inputs
+            valid &= validateInput("loanAmount", loanAmount, limits.loanAmount.min, limits.loanAmount.max);
+            valid &= validateInput("interestRate", interestRate, limits.interestRate.min, limits.interestRate.max);
+            valid &= validateInput("loanTerm", loanTerm, limits.loanTerm.min, limits.loanTerm.max);
+
+            // If any validation failed, stop here
+            if (!valid) return;
 
             // Show loading spinner
             document.getElementById('loadingSpinner').style.display = 'inline-block';
@@ -176,6 +179,21 @@
             document.getElementById('monthlyPayment').innerText = formatCurrency(monthlyPayment);
             document.getElementById('result').style.display = 'block';
         });
+
+        document.getElementById('calculator-form').addEventListener('reset', function() 
+        {
+            document.getElementById('result').style.display = 'none'; // Hide result display.
+            document.getElementById('monthlyPayment').innerText = '$0.00'; // Reset the Monthly Payment.
+        });
+
+        // Resets the Monthly Payment when the form is reset.
+        document.getElementById('resetButton').addEventListener('click', function() 
+        {
+            document.getElementById('calculator-form').reset(); // Resets form inputs.
+            document.getElementById('result').style.display = 'none'; // Hide the result.
+            document.getElementById('monthlyPayment').innerText = '$0.00'; // Reset the Monthly Payment.
+        });
+
     </script>
 
 </body>
