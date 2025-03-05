@@ -108,48 +108,70 @@
 
     <script>
         // ADDED: Restrict input values only after form submission (no real-time correction)
-        const limits = {
+        const limits = 
+        {
             loanAmount: { min: 100, max: 10000000 },
             interestRate: { min: 0.1, max: 50 },
             loanTerm: { min: 1, max: 50 }
         };
 
         // ADDED: Function to validate inputs and show errors
-        function validateInput(id, value, min, max) {
-            if (isNaN(value) || value < min || value > max) {
+        function validateInput(id, value, min, max) 
+        {
+            if (isNaN(value) || value < min || value > max || /[eE]/.test(value) || !/^\d*\.?\d+$/.test(value)) 
+            {
                 document.getElementById(id).classList.add('is-invalid');
                 document.getElementById(id + "Feedback").innerText = `Value is invalid. Please enter a valid amount.`;
                 return false;
-            } else {
+            } 
+            else 
+            {
                 document.getElementById(id).classList.remove('is-invalid');
                 return true;
             }
         }
 
         // Function to calculate the monthly payment
-        function calculateLoanPayment(principal, interestRate, years) {
-            // Convert annual interest rate to a monthly rate
+        function calculateLoanPayment(principal, interestRate, years) 
+        {
             const monthlyRate = interestRate / 100 / 12;
-            
-            // Calculate the total number of payments
             const numberOfPayments = years * 12;
-
-            // Formula to calculate the monthly payment
             const monthlyPayment = (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
-
             return monthlyPayment;
         }
 
         // Function to format currency
-        function formatCurrency(amount) {
+        function formatCurrency(amount) 
+        {
             return new Intl.NumberFormat('en-US', {
                 style: 'currency',
                 currency: 'USD'
             }).format(amount);
         }
 
+        // Prevent scientific notation on all input fields
+        function preventScientificNotation(event) 
+        {
+            const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Enter'];
+            if (allowedKeys.includes(event.key)) 
+            {
+                return;
+            }
+            // Remove 'e' or 'E' characters from the input value
+            if (/[eE]/.test(event.key)) 
+            {
+                event.preventDefault();
+            }
+        }
+
+        // Apply the event listener to all three input fields
+        document.getElementById('loanAmount').addEventListener('input', preventScientificNotation);
+        document.getElementById('interestRate').addEventListener('input', preventScientificNotation);
+        document.getElementById('loanTerm').addEventListener('input', preventScientificNotation);
+
         // Event listener for the form submission
-        document.getElementById('calculator-form').addEventListener('submit', function(event) {
+        document.getElementById('calculator-form').addEventListener('submit', function(event) 
+        {
             event.preventDefault();
 
             const loanAmount = parseFloat(document.getElementById('loanAmount').value);
@@ -158,12 +180,11 @@
 
             let valid = true;
 
-            // ADDED: Validate inputs
+            // Validate inputs
             valid &= validateInput("loanAmount", loanAmount, limits.loanAmount.min, limits.loanAmount.max);
             valid &= validateInput("interestRate", interestRate, limits.interestRate.min, limits.interestRate.max);
             valid &= validateInput("loanTerm", loanTerm, limits.loanTerm.min, limits.loanTerm.max);
 
-            // If any validation failed, stop here
             if (!valid) return;
 
             // Show loading spinner
@@ -183,19 +204,8 @@
         document.getElementById('calculator-form').addEventListener('reset', function() 
         {
             document.getElementById('result').style.display = 'none'; // Hide result display.
-            document.getElementById('monthlyPayment').innerText = '$0.00'; // Reset the Monthly Payment.
         });
-
-        // Resets the Monthly Payment when the form is reset.
-        document.getElementById('resetButton').addEventListener('click', function() 
-        {
-            document.getElementById('calculator-form').reset(); // Resets form inputs.
-            document.getElementById('result').style.display = 'none'; // Hide the result.
-            document.getElementById('monthlyPayment').innerText = '$0.00'; // Reset the Monthly Payment.
-        });
-
     </script>
-
 </body>
 
 </html>
