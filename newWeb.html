@@ -17,6 +17,15 @@
 
 <body data-bs-spy="scroll" data-bs-target=".navbar">
 
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEventModal()">&times;</span>
+            <h2>Add Event</h2>
+            <input type="text" id="event-name" placeholder="Enter event">
+            <button id="save-event" onclick="saveEvent()">Save</button>
+        </div>
+    </div>
+
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
@@ -540,6 +549,7 @@
                             <button class="btn btn-brand">Submit</button>
                         </div>
                     </form>
+                    <!-- Calendar Planner Section -->
                     <div class="wrapper">
                         <header>
                             <p class="current-date"></p>
@@ -548,7 +558,8 @@
                                 <span id="next" class="material-symbols-rounded">chevron_right</span>
                             </div>
                         </header>
-                         <div class="calendar">
+
+                        <div class="calendar">
                             <ul class="weeks">
                                 <li>Sun</li>
                                 <li>Mon</li>
@@ -556,20 +567,23 @@
                                 <li>Wed</li>
                                 <li>Thu</li>
                                 <li>Fri</li>
-                                <li>sat</li>
+                                <li>Sat</li>
                             </ul>
                             <ul class="days"></ul>
-                         </div>
-                         <div class="event-input">
+                        </div>
+
+                        <!-- Event Input -->
+                        <div class="event-input">
                             <h3>Add Event</h3>
                             <input type="text" id="event-name" placeholder="Event Name">
                             <button id="add-event">Add Event</button>
                         </div>
+
                         <!-- Event List -->
                         <div class="event-list">
                             <h3>Upcoming Events</h3>
                             <ul id="event-container"></ul>
-                        </div>       
+                        </div>
                     </div>
                 </div>
             </div>

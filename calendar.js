@@ -11,6 +11,30 @@ currYear = date.getFullYear(),
 currMonth = date.getMonth(),
 selectedDate = null;
 
+let selectedDates = null;
+
+// Open event modal
+function openEventModal(date) {
+    selectedDates = date;
+    document.getElementById("event-modal").style.display = "block";
+}
+
+// Close event modal
+function closeEventModal() {
+    document.getElementById("event-modal").style.display = "none";
+}
+
+// Save event
+function saveEvent() {
+    const eventInput = document.getElementById("event-name").value.trim();
+    if (eventInput) {
+        events[selectedDate] = eventInput;
+        localStorage.setItem("events", JSON.stringify(events));
+        closeEventModal();
+        renderCalendar();
+    }
+}
+
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 // Company Special Events
@@ -20,30 +44,34 @@ const companyEvents = {
     "2025-05-10": "Employee Appreciation Day"
 };
 
+const events = JSON.parse(localStorage.getItem("events")) || {};
+
 const renderCalendar = () => {
-    let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), //getting first day of month
-    lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // Last date of Month
-    lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // Last day of month
-    lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // Last date of Previous Month
+    let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(),
+        lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(),
+        lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(),
+        lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
+    
     let liTag = "";
 
-    for(let i = firstDayofMonth; i > 0; i--){
-        liTag += `<li class="inactive">${lastDateofLastMonth -i + 1}</li>`;
+    for (let i = firstDayofMonth; i > 0; i--) {
+        liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
     }
 
-    for(let i = 1; i <= lastDateofMonth; i++){
+    for (let i = 1; i <= lastDateofMonth; i++) {
+        let dateKey = `${currYear}-${currMonth + 1}-${i}`;
+        let hasEvent = events[dateKey] ? "event" : "";
         let isToday = i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear() ? "active" : "";
-        liTag += `<li class="${isToday}">${i}</li>`;
+        liTag += `<li class="${isToday} ${hasEvent}" data-date="${dateKey}" onclick="openEventModal('${dateKey}')">${i}</li>`;
     }
 
-    for(let i = lastDayofMonth; i < 6; i++ ){
+    for (let i = lastDayofMonth; i < 6; i++) {
         liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
-
     }
 
     currentDate.innerText = `${months[currMonth]} ${currYear}`;
     daysTags.innerHTML = liTag;
-}
+};
 
 renderCalendar();
 
@@ -77,6 +105,8 @@ function displayEvents() {
         eventContainer.appendChild(listItem);
     });
 }
+
+
 
 // Event Listeners
 addEventButton.addEventListener("click", addEvent);
