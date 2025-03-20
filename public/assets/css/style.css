@@ -202,7 +202,7 @@ img {
         rgba(var(--c-brand-rgb), 0.8), 
         rgba(var(--c-brand-rgb), 0.8)
     ), 
-    url("../images/counter.jpg");
+    url("../images/chickenmoney.jpg");
     background-position: center;
     background-size: cover;
     color: #fff; /* White text on dark overlay */
