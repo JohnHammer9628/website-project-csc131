@@ -1,211 +1,264 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ron Smithey - Finance</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="./assets/css/style.css">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ron Smithey - Finance</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<link rel="stylesheet" href="./assets/css/style.css">
+
+
 </head>
-
 <body data-bs-spy="scroll" data-bs-target=".navbar">
-
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="homepage.html">
-                <img src="./assets/images/Designer.png" alt="" width="100" height="50">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
-                    <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
-                    <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="legal.html">Legal</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="homepage.html">
+        <img src="./assets/images/Designer.png" alt="" width="100" height="50">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
+          <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
+          <li class="nav-item"><a class="nav-link" href="legal.html">Legal</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- REVIEW -->
+  <section id="reviews" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center" data-aos="fade-down" data-aos-delay="150">
+          <div class="section-title">
+            <h1 class="display-4 fw-semibold">Resources</h1>
+            <div class="line"></div>
+            <p>We love to craft digital experiences for brands rather than crap and more lorem ipsums and do crazy skills</p>
+          </div>
         </div>
-    </nav>
-
-    <!-- REVIEW -->
-    <section id="reviews" class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center" data-aos="fade-down" data-aos-delay="150">
-                    <div class="section-title">
-                        <h1 class="display-4 fw-semibold">Resources</h1>
-                        <div class="line"></div>
-                        <p>We love to craft digital experiences for brands rather than crap and more lorem ipsums and do crazy skills</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Financial Calculator Section -->
+  <section id="calculator" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="150">
+          <div class="section-title">
+            <h2 class="display-4 fw-semibold">Financial Calculator</h2>
+            <div class="line"></div>
+            <p>Use the calculator below to estimate your monthly loan payments.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Financial Calculator Section -->
-    <section id="calculator" class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="150">
-                    <div class="section-title">
-                        <h2 class="display-4 fw-semibold">Financial Calculator</h2>
-                        <div class="line"></div>
-                        <p>Use the calculator below to estimate your monthly loan payments.</p>
-                    </div>
-                </div>
+      </div>
+      
+      <!-- Loan Calculator Form -->
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form id="calculator-form">
+            <div class="mb-3">
+              <label for="loanAmount" class="form-label">Loan Amount ($)</label>
+              <input type="number" step="0.001" class="form-control" id="loanAmount" placeholder="Enter loan amount" required>
+              <div class="invalid-feedback" id="loanAmountFeedback">Please enter a valid loan amount with up to 3 decimals.</div>
             </div>
-            
-            <!-- Loan Calculator Form -->
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <form id="calculator-form">
-                        <div class="mb-3">
-                            <label for="loanAmount" class="form-label">Loan Amount ($)</label>
-                            <input type="number" class="form-control" id="loanAmount" placeholder="Enter loan amount" required>
-                            <div class="invalid-feedback" id="loanAmountFeedback">Please enter a valid loan amount.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="interestRate" class="form-label">Annual Interest Rate (%)</label>
-                            <input type="number" class="form-control" id="interestRate" placeholder="Enter interest rate" step="any" required>
-                            <div class="invalid-feedback" id="interestRateFeedback">Please enter a valid interest rate.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="loanTerm" class="form-label">Loan Term (years)</label>
-                            <input type="number" class="form-control" id="loanTerm" placeholder="Enter loan term" required>
-                            <div class="invalid-feedback" id="loanTermFeedback">Please enter a valid loan term.</div>
-                        </div>
-                        <button type="submit" class="btn btn-success w-100">Calculate</button>
-                        <button type="reset" class="btn btn-secondary w-100 mt-3">Reset</button>
-                    </form>
-
-                    <!-- Loading Spinner -->
-                    <div class="spinner-border" role="status" id="loadingSpinner" style="display: none;">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-
-                    <!-- Result Display -->
-                    <div id="result" class="mt-4 text-center" style="display: none;">
-                        <h4>Estimated Monthly Payment: <span id="monthlyPayment">$0.00</span></h4>
-                    </div>
-                </div>
+            <div class="mb-3">
+              <label for="interestRate" class="form-label">Annual Interest Rate (%)</label>
+              <input type="number" step="0.001" class="form-control" id="interestRate" placeholder="Enter interest rate" required>
+              <div class="invalid-feedback" id="interestRateFeedback">Please enter a valid interest rate with up to 3 decimals.</div>
             </div>
+            <div class="mb-3">
+              <label for="loanTerm" class="form-label">Loan Term</label>
+              <input type="number" step="0.001" class="form-control" id="loanTerm" placeholder="Enter loan term" required>
+              <select class="form-select mt-2" id="termType" required>
+                <option value="" disabled selected>Select term type</option>
+                <option value="years">Years</option>
+                <option value="months">Months</option>
+              </select>
+              <div class="invalid-feedback" id="loanTermFeedback">Please enter a valid loan term with up to 3 decimals.</div>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Calculate</button>
+            <button type="reset" class="btn btn-secondary w-100 mt-3">Reset</button>
+          </form>
+          <!-- Loading Spinner -->
+          <div class="spinner-border" role="status" id="loadingSpinner" style="display: none;">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <!-- Result Display -->
+          <div id="result" class="mt-4 text-center" style="display: none;"></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="./assets/js/main.js"></script>
+  
+  <script>
+    // Input limits
+    const limits = 
+    {
+      loanAmount: { min: 100, max: 10000000 },
+      interestRate: { min: 0.1, max: 50 },
+      loanTerm: { min: 1, max: 50 }
+    };
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="./assets/js/main.js"></script>
+    // Validate input (as a string) and allow up to 3 decimal places.
+    function validateInput(id, rawValue, min, max) 
+    {
+      const numericValue = parseFloat(rawValue);
+      // Regex: any digits, optional decimal point, and up to 3 digits after the decimal.
+      const regex = /^\d*(\.\d{0,3})?$/;
+      
+      if (isNaN(numericValue) || numericValue < min || numericValue > max || /[eE]/.test(rawValue) || !regex.test(rawValue)) 
+      {
+        document.getElementById(id).classList.add('is-invalid');
+        document.getElementById(id + "Feedback").innerText = `Value is invalid. Please enter a valid amount with up to 3 decimals.`;
+        return false;
+      }
+      else 
+      {
+        document.getElementById(id).classList.remove('is-invalid');
+        return true;
+      }
+    }
 
-    <script>
-        // ADDED: Restrict input values only after form submission (no real-time correction)
-        const limits = 
-        {
-            loanAmount: { min: 100, max: 10000000 },
-            interestRate: { min: 0.1, max: 50 },
-            loanTerm: { min: 1, max: 50 }
-        };
+    // Calculate monthly payment based on the number of payments.
+    function calculateLoanPayment(principal, interestRate, numberOfPayments) 
+    {
+      const monthlyRate = interestRate / 100 / 12;
+      return (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+    }
 
-        // ADDED: Function to validate inputs and show errors
-        function validateInput(id, value, min, max) 
-        {
-            if (isNaN(value) || value < min || value > max || /[eE]/.test(value) || !/^\d*\.?\d+$/.test(value)) 
-            {
-                document.getElementById(id).classList.add('is-invalid');
-                document.getElementById(id + "Feedback").innerText = `Value is invalid. Please enter a valid amount.`;
-                return false;
-            } 
-            else 
-            {
-                document.getElementById(id).classList.remove('is-invalid');
-                return true;
-            }
-        }
+    // Format number as US currency.
+    function formatCurrency(amount) 
+    {
+      return new Intl.NumberFormat('en-US', 
+      {
+        style: 'currency',
+        currency: 'USD'
+      }).format(amount);
+    }
 
-        // Function to calculate the monthly payment
-        function calculateLoanPayment(principal, interestRate, years) 
-        {
-            const monthlyRate = interestRate / 100 / 12;
-            const numberOfPayments = years * 12;
-            const monthlyPayment = (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
-            return monthlyPayment;
-        }
+    // Prevent scientific notation in inputs.
+    function preventScientificNotation(event) 
+    {
+      const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Enter'];
+      if (allowedKeys.includes(event.key)) 
+      {
+        return;
+      }
+      if (/[eE]/.test(event.key)) 
+      {
+        event.preventDefault();
+      }
+    }
 
-        // Function to format currency
-        function formatCurrency(amount) 
-        {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD'
-            }).format(amount);
-        }
+    // Restrict scientific notation on inputs.
+    document.getElementById('loanAmount').addEventListener('input', preventScientificNotation);
+    document.getElementById('interestRate').addEventListener('input', preventScientificNotation);
+    document.getElementById('loanTerm').addEventListener('input', preventScientificNotation);
 
-        // Prevent scientific notation on all input fields
-        function preventScientificNotation(event) 
-        {
-            const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Enter'];
-            if (allowedKeys.includes(event.key)) 
-            {
-                return;
-            }
-            // Remove 'e' or 'E' characters from the input value
-            if (/[eE]/.test(event.key)) 
-            {
-                event.preventDefault();
-            }
-        }
+    // Optionally format inputs on blur to 3 decimals.
+    document.getElementById('loanAmount').addEventListener('blur', function() 
+    {
+      let value = parseFloat(this.value);
+      if (!isNaN(value)) 
+      {
+        this.value = value.toFixed(3);
+      }
+    });
+    document.getElementById('interestRate').addEventListener('blur', function() 
+    {
+      let value = parseFloat(this.value);
+      if (!isNaN(value)) 
+      {
+        this.value = value.toFixed(3);
+      }
+    });
+    document.getElementById('loanTerm').addEventListener('blur', function() 
+    {
+      let value = parseFloat(this.value);
+      if (!isNaN(value)) 
+      {
+        this.value = value.toFixed(3);
+      }
+    });
 
-        // Apply the event listener to all three input fields
-        document.getElementById('loanAmount').addEventListener('input', preventScientificNotation);
-        document.getElementById('interestRate').addEventListener('input', preventScientificNotation);
-        document.getElementById('loanTerm').addEventListener('input', preventScientificNotation);
+    // Form submission handler.
+    document.getElementById('calculator-form').addEventListener('submit', function (event) 
+    {
+      event.preventDefault();
 
-        // Event listener for the form submission
-        document.getElementById('calculator-form').addEventListener('submit', function(event) 
-        {
-            event.preventDefault();
+      // Get raw input values.
+      const loanAmountRaw = document.getElementById('loanAmount').value;
+      const interestRateRaw = document.getElementById('interestRate').value;
+      const loanTermRaw = document.getElementById('loanTerm').value;
+      const termType = document.getElementById('termType').value;
 
-            const loanAmount = parseFloat(document.getElementById('loanAmount').value);
-            const interestRate = parseFloat(document.getElementById('interestRate').value);
-            const loanTerm = parseFloat(document.getElementById('loanTerm').value);
+      // Parse values for calculation.
+      const loanAmount = parseFloat(loanAmountRaw);
+      const interestRate = parseFloat(interestRateRaw);
+      const loanTerm = parseFloat(loanTermRaw);
 
-            let valid = true;
+      let valid = true;
+      valid &= validateInput("loanAmount", loanAmountRaw, limits.loanAmount.min, limits.loanAmount.max);
+      valid &= validateInput("interestRate", interestRateRaw, limits.interestRate.min, limits.interestRate.max);
+      valid &= validateInput("loanTerm", loanTermRaw, limits.loanTerm.min, limits.loanTerm.max);
+      if (!valid) return;
 
-            // Validate inputs
-            valid &= validateInput("loanAmount", loanAmount, limits.loanAmount.min, limits.loanAmount.max);
-            valid &= validateInput("interestRate", interestRate, limits.interestRate.min, limits.interestRate.max);
-            valid &= validateInput("loanTerm", loanTerm, limits.loanTerm.min, limits.loanTerm.max);
+      // Determine number of payments based on term type.
+      let numberOfPayments;
+      if (termType === "years") 
+      {
+        numberOfPayments = loanTerm * 12;
+      } 
+      else if (termType === "months") 
+      {
+        numberOfPayments = loanTerm;
+      } 
+      else 
+      {
+        numberOfPayments = loanTerm * 12;
+      }
 
-            if (!valid) return;
+      // Show loading spinner.
+      document.getElementById('loadingSpinner').style.display = 'inline-block';
 
-            // Show loading spinner
-            document.getElementById('loadingSpinner').style.display = 'inline-block';
+      // Calculate monthly payment.
+      const monthlyPayment = calculateLoanPayment(loanAmount, interestRate, numberOfPayments);
 
-            // Calculate the monthly payment
-            const monthlyPayment = calculateLoanPayment(loanAmount, interestRate, loanTerm);
+      // Hide loading spinner.
+      document.getElementById('loadingSpinner').style.display = 'none';
 
-            // Hide the loading spinner
-            document.getElementById('loadingSpinner').style.display = 'none';
+      // Display results.
+      document.getElementById('result').innerHTML = `
+        <h4>Estimated Monthly Payment: <span id="monthlyPayment">${formatCurrency(monthlyPayment)}</span></h4>
+        <p>Total Interest Paid: <span id="totalInterest">$0.00</span></p>
+        <p>Total Amount Paid: <span id="totalPaid">$0.00</span></p>
+        <p>This calculation is based on a loan amount of ${formatCurrency(loanAmount)} at an annual interest rate of ${interestRate}% for a term of ${loanTerm} ${termType}.</p>
+      `;
+      document.getElementById('result').style.display = 'block';
+    });
 
-            // Display the result
-            document.getElementById('monthlyPayment').innerText = formatCurrency(monthlyPayment);
-            document.getElementById('result').style.display = 'block';
-        });
-
-        document.getElementById('calculator-form').addEventListener('reset', function() 
-        {
-            document.getElementById('result').style.display = 'none'; // Hide result display.
-        });
-    </script>
+    // Hide result display on form reset.
+    document.getElementById('calculator-form').addEventListener('reset', function () 
+    {
+      document.getElementById('result').style.display = 'none';
+    });
+  </script>
 </body>
-
 </html>
