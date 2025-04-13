@@ -1,268 +1,400 @@
 <!doctype html>
 <html lang="en">
 <head>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ron Smithey - Finance</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<link rel="stylesheet" href="./assets/css/style.css">
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ron Smithey - Finance</title>
+  <!-- CSS Libraries -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    /* Extra styling for the calculator section */
+    .section-padding {
+      padding: 60px 0;
+    }
+    /* Horizontal navigation buttons (Bootstrap pills) above the calculator */
+    .calc-btn-group {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px; /* Added gap for spacing between buttons */
+      flex-wrap: wrap;
+    }
+    .calc-btn-group .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 5px; /* Space between icon and text */
+      /* Use our custom green button styling */
+      background-color: #28a745;
+      color: #fff;
+      border: 1px solid #28a745;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+    .calc-btn-group .nav-link:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+      color: #fff;
+    }
+    .calc-btn-group .nav-link.active {
+      background-color: #218838;
+      border-color: #1e7e34;
+      color: #fff;
+    }
+    /* Custom button colors for Calculate buttons */
+    .btn-calc {
+      background-color: #28a745; /* Green */
+      border-color: #28a745;
+      color: #fff;
+    }
+    .btn-calc:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+      color: #fff;
+    }
+    /* Custom button colors for Reset buttons (gray) */
+    .btn-reset {
+      background-color: #6c757d; /* Gray */
+      border-color: #6c757d;
+      color: #fff;
+    }
+    .btn-reset:hover {
+      background-color: #5a6268;
+      border-color: #545b62;
+      color: #fff;
+    }
+  </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target=".navbar">
-  <!-- NAVBAR -->
+  <!-- MAIN NAVBAR (Your original header) -->
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
       <a class="navbar-brand" href="homepage.html">
-        <img src="./assets/images/Designer.png" alt="" width="100" height="50">
+        <img src="./assets/images/Designer.png" alt="Logo" width="100" height="50">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
-            <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
-            <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
-            <li class="nav-item"><a class="nav-link" href="legal.html">Legal</a>
-                <div class="dropdown-menu">
-                    <a href="legal.html">Private Policies</a>
-                    <a href="Compliance.html">Compliance</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-          </ul>
+          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
+          <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="legal.html" role="button" data-bs-toggle="dropdown">
+              Legal
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="legal.html">Private Policies</a></li>
+              <li><a class="dropdown-item" href="Compliance.html">Compliance</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        </ul>
       </div>
     </div>
   </nav>
   
-  <!-- REVIEW -->
-  <section id="reviews" class="section-padding">
+  <!-- CALCULATOR SECTION WITH HORIZONTAL BUTTON NAVIGATION -->
+  <section id="calculators" class="section-padding">
     <div class="container">
-      <div class="row">
-        <div class="col-12 text-center" data-aos="fade-down" data-aos-delay="150">
-          <div class="section-title">
-            <h1 class="display-4 fw-semibold">Resources</h1>
-            <div class="line"></div>
-            <p>We love to craft digital experiences for brands rather than crap and more lorem ipsums and do crazy skills</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Financial Calculator Section -->
-  <section id="calculator" class="section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="150">
-          <div class="section-title">
-            <h2 class="display-4 fw-semibold">Financial Calculator</h2>
-            <div class="line"></div>
-            <p>Use the calculator below to estimate your monthly loan payments.</p>
-          </div>
-        </div>
-      </div>
+      <!-- Horizontal Navigation using Bootstrap Pills -->
+      <ul class="nav nav-pills justify-content-center calc-btn-group" id="calcTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active btn btn-calc" id="loan-tab" data-bs-toggle="pill" data-bs-target="#loanCalc" type="button" role="tab" aria-controls="loanCalc" aria-selected="true">
+            <i class="ri-money-dollar-circle-line"></i> Loan Calculator
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link btn btn-calc" id="retirement-tab" data-bs-toggle="pill" data-bs-target="#retirementCalc" type="button" role="tab" aria-controls="retirementCalc" aria-selected="false">
+            <i class="ri-time-line"></i> Retirement Calculator
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link btn btn-calc" id="life-tab" data-bs-toggle="pill" data-bs-target="#lifeCalc" type="button" role="tab" aria-controls="lifeCalc" aria-selected="false">
+            <i class="ri-shield-user-line"></i> Life Insurance
+          </button>
+        </li>
+      </ul>
       
-      <!-- Loan Calculator Form -->
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <form id="calculator-form">
+      <!-- Calculator Forms Content -->
+      <div class="tab-content" id="calcTabContent">
+        <!-- Loan Payment Calculator -->
+        <div class="tab-pane fade show active" id="loanCalc" role="tabpanel" aria-labelledby="loan-tab">
+          <div class="text-center mb-4" data-aos="fade-up">
+            <h2 class="display-4 fw-semibold">Loan Payment Calculator</h2>
+            <p>Estimate your monthly payments, total interest, and the total amount paid.</p>
+          </div>
+          <form id="loan-calc-form">
             <div class="mb-3">
-              <label for="loanAmount" class="form-label">Loan Amount ($)</label>
-              <input type="number" step="0.001" class="form-control" id="loanAmount" placeholder="Enter loan amount" required>
-              <div class="invalid-feedback" id="loanAmountFeedback">Please enter a valid loan amount with up to 3 decimals.</div>
+              <label for="loan-amount" class="form-label">Loan Amount ($)</label>
+              <input type="number" step="0.001" class="form-control" id="loan-amount" placeholder="Enter loan amount" min="100" max="10000000" required>
+              <div class="invalid-feedback" id="loan-amountFeedback"></div>
             </div>
             <div class="mb-3">
-              <label for="interestRate" class="form-label">Annual Interest Rate (%)</label>
-              <input type="number" step="0.001" class="form-control" id="interestRate" placeholder="Enter interest rate" required>
-              <div class="invalid-feedback" id="interestRateFeedback">Please enter a valid interest rate with up to 3 decimals.</div>
+              <label for="loan-interest" class="form-label">Annual Interest Rate (%)</label>
+              <input type="number" step="0.001" class="form-control" id="loan-interest" placeholder="Enter interest rate" min="0" max="50" required>
+              <div class="invalid-feedback" id="loan-interestFeedback"></div>
             </div>
             <div class="mb-3">
-              <label for="loanTerm" class="form-label">Loan Term</label>
-              <input type="number" step="0.001" class="form-control" id="loanTerm" placeholder="Enter loan term" required>
-              <select class="form-select mt-2" id="termType" required>
+              <label for="loan-term" class="form-label">Loan Term</label>
+              <input type="number" step="0.001" class="form-control" id="loan-term" placeholder="Enter loan term" min="1" max="50" required>
+              <select class="form-select mt-2" id="loan-term-type" required>
                 <option value="" disabled selected>Select term type</option>
                 <option value="years">Years</option>
                 <option value="months">Months</option>
               </select>
-              <div class="invalid-feedback" id="loanTermFeedback">Please enter a valid loan term with up to 3 decimals.</div>
+              <div class="invalid-feedback" id="loan-termFeedback"></div>
             </div>
-            <button type="submit" class="btn btn-success w-100">Calculate</button>
-            <button type="reset" class="btn btn-secondary w-100 mt-3">Reset</button>
+            <button type="submit" class="btn btn-calc w-100">Calculate</button>
+            <button type="reset" class="btn btn-reset w-100 mt-3">Reset</button>
           </form>
-          <!-- Loading Spinner -->
-          <div class="spinner-border" role="status" id="loadingSpinner" style="display: none;">
+          <!-- Spinner and Result for Loan Calculator -->
+          <div class="spinner-border mt-3" role="status" id="loan-spinner" style="display: none;">
             <span class="visually-hidden">Loading...</span>
           </div>
-          <!-- Result Display -->
-          <div id="result" class="mt-4 text-center" style="display: none;"></div>
+          <div id="loan-result" class="mt-4 text-center" style="display: none;"></div>
         </div>
-      </div>
-    </div>
+        
+        <!-- Cost of Retirement Calculator -->
+        <div class="tab-pane fade" id="retirementCalc" role="tabpanel" aria-labelledby="retirement-tab">
+          <div class="text-center mb-4" data-aos="fade-up">
+            <h2 class="display-4 fw-semibold">Cost of Retirement Calculator</h2>
+            <p>Estimate the retirement fund you'll need based on your expected expenses at retirement.</p>
+          </div>
+          <form id="retirement-calc-form">
+            <div class="mb-3">
+              <label for="retirement-expense" class="form-label">Current Annual Expense for Retirement ($)</label>
+              <input type="number" step="0.01" class="form-control" id="retirement-expense" placeholder="e.g., 50000" min="1" required>
+              <div class="invalid-feedback" id="retirement-expenseFeedback"></div>
+            </div>
+            <div class="mb-3">
+              <label for="retirement-years" class="form-label">Years Until Retirement</label>
+              <input type="number" step="0.01" class="form-control" id="retirement-years" placeholder="e.g., 20" min="1" required>
+              <div class="invalid-feedback" id="retirement-yearsFeedback"></div>
+            </div>
+            <div class="mb-3">
+              <label for="retirement-inflation" class="form-label">Annual Inflation Rate (%)</label>
+              <input type="number" step="0.01" class="form-control" id="retirement-inflation" placeholder="e.g., 2.5" min="0" required>
+              <div class="invalid-feedback" id="retirement-inflationFeedback"></div>
+            </div>
+            <div class="mb-3">
+              <label for="retirement-withdrawal" class="form-label">Safe Withdrawal Rate (%)</label>
+              <input type="number" step="0.01" class="form-control" id="retirement-withdrawal" placeholder="e.g., 4" min="0" required>
+              <div class="invalid-feedback" id="retirement-withdrawalFeedback"></div>
+            </div>
+            <button type="submit" class="btn btn-calc w-100">Calculate</button>
+            <button type="reset" class="btn btn-reset w-100 mt-3">Reset</button>
+          </form>
+          <!-- Spinner and Result for Retirement Calculator -->
+          <div class="spinner-border mt-3" role="status" id="retirement-spinner" style="display: none;">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div id="retirement-result" class="mt-4 text-center" style="display: none;"></div>
+        </div>
+        
+        <!-- Life Insurance Calculator -->
+        <div class="tab-pane fade" id="lifeCalc" role="tabpanel" aria-labelledby="life-tab">
+          <div class="text-center mb-4" data-aos="fade-up">
+            <h2 class="display-4 fw-semibold">Life Insurance Calculator</h2>
+            <p>Estimate how much life insurance coverage you may need.</p>
+          </div>
+          <form id="life-calc-form">
+            <div class="mb-3">
+              <label for="life-income" class="form-label">Annual Income ($)</label>
+              <input type="number" step="0.01" class="form-control" id="life-income" placeholder="Enter annual income" min="1" required>
+              <div class="invalid-feedback" id="life-incomeFeedback"></div>
+            </div>
+            <div class="mb-3">
+              <label for="life-years" class="form-label">Years of Support Needed</label>
+              <input type="number" step="0.01" class="form-control" id="life-years" placeholder="Enter number of years" min="1" required>
+              <div class="invalid-feedback" id="life-yearsFeedback"></div>
+            </div>
+            <div class="mb-3">
+              <label for="life-debts" class="form-label">Outstanding Debts ($)</label>
+              <input type="number" step="0.01" class="form-control" id="life-debts" placeholder="Enter total debts" min="0" required>
+              <div class="invalid-feedback" id="life-debtsFeedback"></div>
+            </div>
+            <div class="mb-3">
+              <label for="life-savings" class="form-label">Current Savings/Assets ($)</label>
+              <input type="number" step="0.01" class="form-control" id="life-savings" placeholder="Enter current savings" min="0" required>
+              <div class="invalid-feedback" id="life-savingsFeedback"></div>
+            </div>
+            <button type="submit" class="btn btn-calc w-100">Calculate</button>
+            <button type="reset" class="btn btn-reset w-100 mt-3">Reset</button>
+          </form>
+          <!-- Spinner and Result for Life Insurance Calculator -->
+          <div class="spinner-border mt-3" role="status" id="life-spinner" style="display: none;">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div id="life-result" class="mt-4 text-center" style="display: none;"></div>
+        </div>
+      </div><!-- end tab-content -->
+    </div><!-- end container -->
   </section>
   
+  <!-- JS Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="./assets/js/main.js"></script>
   
+  <!-- Calculator JavaScript -->
   <script>
-    // Input limits
-    const limits = 
-    {
-      loanAmount: { min: 100, max: 10000000 },
-      interestRate: { min: 0.1, max: 50 },
-      loanTerm: { min: 1, max: 50 }
-    };
-
-    // Validate input (as a string) and allow up to 3 decimal places.
-    function validateInput(id, rawValue, min, max) 
-    {
+    // Utility: Simple validation for numeric input (up to 3 decimals by default)
+    function validateInput(id, rawValue, min, max) {
       const numericValue = parseFloat(rawValue);
-      // Regex: any digits, optional decimal point, and up to 3 digits after the decimal.
       const regex = /^\d*(\.\d{0,3})?$/;
-      
-      if (isNaN(numericValue) || numericValue < min || numericValue > max || /[eE]/.test(rawValue) || !regex.test(rawValue)) 
-      {
+      if (isNaN(numericValue) || numericValue < min || numericValue > max || /[eE]/.test(rawValue) || !regex.test(rawValue)) {
         document.getElementById(id).classList.add('is-invalid');
-        document.getElementById(id + "Feedback").innerText = `Value is invalid. Please enter a valid amount with up to 3 decimals.`;
         return false;
-      }
-      else 
-      {
+      } else {
         document.getElementById(id).classList.remove('is-invalid');
         return true;
       }
     }
-
-    // Calculate monthly payment based on the number of payments.
-    function calculateLoanPayment(principal, interestRate, numberOfPayments) 
-    {
-      const monthlyRate = interestRate / 100 / 12;
-      return (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+    
+    // Format as US Currency
+    function formatCurrency(amount) {
+      return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
     }
-
-    // Format number as US currency.
-    function formatCurrency(amount) 
-    {
-      return new Intl.NumberFormat('en-US', 
-      {
-        style: 'currency',
-        currency: 'USD'
-      }).format(amount);
-    }
-
-    // Prevent scientific notation in inputs.
-    function preventScientificNotation(event) 
-    {
+    
+    // Prevent scientific notation (optional)
+    function preventScientificNotation(event) {
       const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Enter'];
-      if (allowedKeys.includes(event.key)) 
-      {
-        return;
-      }
-      if (/[eE]/.test(event.key)) 
-      {
-        event.preventDefault();
-      }
+      if (allowedKeys.includes(event.key)) return;
+      if (/[eE]/.test(event.key)) event.preventDefault();
     }
-
-    // Restrict scientific notation on inputs.
-    document.getElementById('loanAmount').addEventListener('input', preventScientificNotation);
-    document.getElementById('interestRate').addEventListener('input', preventScientificNotation);
-    document.getElementById('loanTerm').addEventListener('input', preventScientificNotation);
-
-    // Optionally format inputs on blur to 3 decimals.
-    document.getElementById('loanAmount').addEventListener('blur', function() 
-    {
-      let value = parseFloat(this.value);
-      if (!isNaN(value)) 
-      {
-        this.value = value.toFixed(3);
-      }
-    });
-    document.getElementById('interestRate').addEventListener('blur', function() 
-    {
-      let value = parseFloat(this.value);
-      if (!isNaN(value)) 
-      {
-        this.value = value.toFixed(3);
-      }
-    });
-    document.getElementById('loanTerm').addEventListener('blur', function() 
-    {
-      let value = parseFloat(this.value);
-      if (!isNaN(value)) 
-      {
-        this.value = value.toFixed(3);
-      }
-    });
-
-    // Form submission handler.
-    document.getElementById('calculator-form').addEventListener('submit', function (event) 
-    {
+    
+    // -------------------------
+    // Loan Payment Calculator
+    // -------------------------
+    document.getElementById('loan-amount').addEventListener('input', preventScientificNotation);
+    document.getElementById('loan-interest').addEventListener('input', preventScientificNotation);
+    document.getElementById('loan-term').addEventListener('input', preventScientificNotation);
+    
+    document.getElementById('loan-calc-form').addEventListener('submit', function(event) {
       event.preventDefault();
-
-      // Get raw input values.
-      const loanAmountRaw = document.getElementById('loanAmount').value;
-      const interestRateRaw = document.getElementById('interestRate').value;
-      const loanTermRaw = document.getElementById('loanTerm').value;
-      const termType = document.getElementById('termType').value;
-
-      // Parse values for calculation.
-      const loanAmount = parseFloat(loanAmountRaw);
-      const interestRate = parseFloat(interestRateRaw);
-      const loanTerm = parseFloat(loanTermRaw);
-
       let valid = true;
-      valid &= validateInput("loanAmount", loanAmountRaw, limits.loanAmount.min, limits.loanAmount.max);
-      valid &= validateInput("interestRate", interestRateRaw, limits.interestRate.min, limits.interestRate.max);
-      valid &= validateInput("loanTerm", loanTermRaw, limits.loanTerm.min, limits.loanTerm.max);
-      if (!valid) return;
-
-      // Determine number of payments based on term type.
-      let numberOfPayments;
-      if (termType === "years") 
-      {
-        numberOfPayments = loanTerm * 12;
-      } 
-      else if (termType === "months") 
-      {
-        numberOfPayments = loanTerm;
-      } 
-      else 
-      {
-        numberOfPayments = loanTerm * 12;
+      valid &= validateInput('loan-amount', document.getElementById('loan-amount').value, 100, 10000000);
+      valid &= validateInput('loan-interest', document.getElementById('loan-interest').value, 0, 50);
+      valid &= validateInput('loan-term', document.getElementById('loan-term').value, 1, 50);
+      if (document.getElementById('loan-term-type').value === "") {
+        alert("Please select a term type.");
+        valid = false;
       }
-
-      // Show loading spinner.
-      document.getElementById('loadingSpinner').style.display = 'inline-block';
-
-      // Calculate monthly payment.
-      const monthlyPayment = calculateLoanPayment(loanAmount, interestRate, numberOfPayments);
-
-      // Hide loading spinner.
-      document.getElementById('loadingSpinner').style.display = 'none';
-
-      // Display results.
-      document.getElementById('result').innerHTML = `
-        <h4>Estimated Monthly Payment: <span id="monthlyPayment">${formatCurrency(monthlyPayment)}</span></h4>
-        <p>Total Interest Paid: <span id="totalInterest">$0.00</span></p>
-        <p>Total Amount Paid: <span id="totalPaid">$0.00</span></p>
-        <p>This calculation is based on a loan amount of ${formatCurrency(loanAmount)} at an annual interest rate of ${interestRate}% for a term of ${loanTerm} ${termType}.</p>
+      if (!valid) return;
+      
+      const principal = parseFloat(document.getElementById('loan-amount').value);
+      const interestRate = parseFloat(document.getElementById('loan-interest').value);
+      const term = parseFloat(document.getElementById('loan-term').value);
+      const termType = document.getElementById('loan-term-type').value;
+      const numberOfPayments = (termType === "years") ? term * 12 : term;
+      
+      document.getElementById('loan-spinner').style.display = 'inline-block';
+      let monthlyPayment;
+      if (interestRate === 0) {
+        monthlyPayment = principal / numberOfPayments;
+      } else {
+        const monthlyRate = (interestRate / 100) / 12;
+        monthlyPayment = (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+      }
+      const totalPaid = monthlyPayment * numberOfPayments;
+      const totalInterest = totalPaid - principal;
+      document.getElementById('loan-spinner').style.display = 'none';
+      document.getElementById('loan-result').innerHTML = `
+        <h4>Estimated Monthly Payment: <span>${formatCurrency(monthlyPayment)}</span></h4>
+        <p>Total Interest Paid: <span>${formatCurrency(totalInterest)}</span></p>
+        <p>Total Amount Paid: <span>${formatCurrency(totalPaid)}</span></p>
       `;
-      document.getElementById('result').style.display = 'block';
+      document.getElementById('loan-result').style.display = 'block';
     });
-
-    // Hide result display on form reset.
-    document.getElementById('calculator-form').addEventListener('reset', function () 
-    {
-      document.getElementById('result').style.display = 'none';
+    
+    document.getElementById('loan-calc-form').addEventListener('reset', function() {
+      document.getElementById('loan-result').style.display = 'none';
     });
+    
+    // -------------------------------
+    // Cost of Retirement Calculator
+    // -------------------------------
+    document.getElementById('retirement-expense').addEventListener('input', preventScientificNotation);
+    document.getElementById('retirement-years').addEventListener('input', preventScientificNotation);
+    document.getElementById('retirement-inflation').addEventListener('input', preventScientificNotation);
+    document.getElementById('retirement-withdrawal').addEventListener('input', preventScientificNotation);
+    
+    document.getElementById('retirement-calc-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      let valid = true;
+      valid &= validateInput('retirement-expense', document.getElementById('retirement-expense').value, 1, 1000000000);
+      valid &= validateInput('retirement-years', document.getElementById('retirement-years').value, 1, 100);
+      valid &= validateInput('retirement-inflation', document.getElementById('retirement-inflation').value, 0, 100);
+      valid &= validateInput('retirement-withdrawal', document.getElementById('retirement-withdrawal').value, 0.1, 100);
+      if (!valid) return;
+      
+      const expense = parseFloat(document.getElementById('retirement-expense').value);
+      const years = parseFloat(document.getElementById('retirement-years').value);
+      const inflation = parseFloat(document.getElementById('retirement-inflation').value);
+      const withdrawal = parseFloat(document.getElementById('retirement-withdrawal').value);
+      
+      document.getElementById('retirement-spinner').style.display = 'inline-block';
+      const futureExpense = expense * Math.pow((1 + inflation/100), years);
+      const requiredNestEgg = futureExpense / (withdrawal/100);
+      document.getElementById('retirement-spinner').style.display = 'none';
+      document.getElementById('retirement-result').innerHTML = `
+        <h4>Future Annual Expense at Retirement: <span>${formatCurrency(futureExpense)}</span></h4>
+        <p>Estimated Required Nest Egg (using a ${withdrawal}% withdrawal rate): <span>${formatCurrency(requiredNestEgg)}</span></p>
+      `;
+      document.getElementById('retirement-result').style.display = 'block';
+    });
+    
+    document.getElementById('retirement-calc-form').addEventListener('reset', function() {
+      document.getElementById('retirement-result').style.display = 'none';
+    });
+    
+    // -----------------------------
+    // Life Insurance Calculator
+    // -----------------------------
+    document.getElementById('life-income').addEventListener('input', preventScientificNotation);
+    document.getElementById('life-years').addEventListener('input', preventScientificNotation);
+    document.getElementById('life-debts').addEventListener('input', preventScientificNotation);
+    document.getElementById('life-savings').addEventListener('input', preventScientificNotation);
+    
+    document.getElementById('life-calc-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      let valid = true;
+      valid &= validateInput('life-income', document.getElementById('life-income').value, 1, 1000000000);
+      valid &= validateInput('life-years', document.getElementById('life-years').value, 1, 100);
+      valid &= validateInput('life-debts', document.getElementById('life-debts').value, 0, 1000000000);
+      valid &= validateInput('life-savings', document.getElementById('life-savings').value, 0, 1000000000);
+      if (!valid) return;
+      
+      const income = parseFloat(document.getElementById('life-income').value);
+      const years = parseFloat(document.getElementById('life-years').value);
+      const debts = parseFloat(document.getElementById('life-debts').value);
+      const savings = parseFloat(document.getElementById('life-savings').value);
+      
+      document.getElementById('life-spinner').style.display = 'inline-block';
+      let recommendedCoverage = (income * years) + debts - savings;
+      if (recommendedCoverage < 0) {
+        recommendedCoverage = 0;
+      }
+      document.getElementById('life-spinner').style.display = 'none';
+      document.getElementById('life-result').innerHTML = `
+        <h4>Recommended Life Insurance Coverage: <span>${formatCurrency(recommendedCoverage)}</span></h4>
+      `;
+      document.getElementById('life-result').style.display = 'block';
+    });
+    
+    document.getElementById('life-calc-form').addEventListener('reset', function() {
+      document.getElementById('life-result').style.display = 'none';
+    });
+    
+    // Initialize AOS for animations (if needed)
+    AOS.init();
   </script>
 </body>
 </html>
