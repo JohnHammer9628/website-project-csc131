@@ -7,27 +7,40 @@
   <!-- CSS Libraries -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="./assets/css/style.css">
   <style>
-    /* Extra styling for the calculator section */
+    /* Ensure the html and body fill the viewport */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    /* Wrapper to keep footer at the very bottom */
+    #pageWrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      flex: 1;
+    }
+    /* Extra styling for the sections */
     .section-padding {
       padding: 60px 0;
     }
-    /* Horizontal navigation buttons (Bootstrap pills) above the calculator */
+    /* Horizontal navigation buttons (Bootstrap pills) */
     .calc-btn-group {
       margin-bottom: 20px;
       display: flex;
       justify-content: center;
-      gap: 15px; /* Added gap for spacing between buttons */
+      gap: 15px;
       flex-wrap: wrap;
     }
     .calc-btn-group .nav-link {
       display: flex;
       align-items: center;
-      gap: 5px; /* Space between icon and text */
-      /* Use our custom green button styling */
+      gap: 5px;
       background-color: #28a745;
       color: #fff;
       border: 1px solid #28a745;
@@ -44,9 +57,9 @@
       border-color: #1e7e34;
       color: #fff;
     }
-    /* Custom button colors for Calculate buttons */
+    /* Buttons for calculator forms */
     .btn-calc {
-      background-color: #28a745; /* Green */
+      background-color: #28a745;
       border-color: #28a745;
       color: #fff;
     }
@@ -55,9 +68,8 @@
       border-color: #1e7e34;
       color: #fff;
     }
-    /* Custom button colors for Reset buttons (gray) */
     .btn-reset {
-      background-color: #6c757d; /* Gray */
+      background-color: #6c757d;
       border-color: #6c757d;
       color: #fff;
     }
@@ -66,176 +78,297 @@
       border-color: #545b62;
       color: #fff;
     }
+    /* Scroll Progress Bar */
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background-color: #28a745;
+      width: 0%;
+      z-index: 1050;
+    }
+    /* Back-to-Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      z-index: 1050;
+      border: none;
+      background-color: #28a745;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    #backToTop:hover {
+      background-color: #218838;
+    }
+    /* Budgeting Tools Section Styling */
+    #budgetingTools {
+      /* Inherit the page's background */
+    }
+    #budgetingTools .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    #budgetingTools .card {
+      background-color: #343a40; /* Same dark gray as the footer */
+      color: #fff;
+      border: none;
+      border-top: 3px solid #28a745;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    #budgetingTools .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    #budgetingTools .card-img-top {
+      object-fit: cover;
+      height: 200px;
+      transition: filter 0.3s ease;
+    }
+    #budgetingTools .card:hover .card-img-top {
+      filter: brightness(0.9);
+    }
+    #budgetingTools .card-title i {
+      font-size: 1.5rem;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    /* Footer Styling */
+    footer {
+      background-color: #343a40;
+      color: #fff;
+      margin: 0;
+      padding: 1rem 0;
+    }
   </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target=".navbar">
-  <!-- MAIN NAVBAR (Your original header) -->
-  <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="homepage.html">
-        <img src="./assets/images/Designer.png" alt="Logo" width="100" height="50">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
-          <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
-          <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="legal.html" role="button" data-bs-toggle="dropdown">
-              Legal
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="legal.html">Private Policies</a></li>
-              <li><a class="dropdown-item" href="Compliance.html">Compliance</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-  <!-- CALCULATOR SECTION WITH HORIZONTAL BUTTON NAVIGATION -->
-  <section id="calculators" class="section-padding">
-    <div class="container">
-      <!-- Horizontal Navigation using Bootstrap Pills -->
-      <ul class="nav nav-pills justify-content-center calc-btn-group" id="calcTab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active btn btn-calc" id="loan-tab" data-bs-toggle="pill" data-bs-target="#loanCalc" type="button" role="tab" aria-controls="loanCalc" aria-selected="true">
-            <i class="ri-money-dollar-circle-line"></i> Loan Calculator
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link btn btn-calc" id="retirement-tab" data-bs-toggle="pill" data-bs-target="#retirementCalc" type="button" role="tab" aria-controls="retirementCalc" aria-selected="false">
-            <i class="ri-time-line"></i> Retirement Calculator
-          </button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link btn btn-calc" id="life-tab" data-bs-toggle="pill" data-bs-target="#lifeCalc" type="button" role="tab" aria-controls="lifeCalc" aria-selected="false">
-            <i class="ri-shield-user-line"></i> Life Insurance
-          </button>
-        </li>
-      </ul>
+  <div id="pageWrapper">
+    <main>
+      <!-- Scroll Progress Bar -->
+      <div id="scrollProgress"></div>
       
-      <!-- Calculator Forms Content -->
-      <div class="tab-content" id="calcTabContent">
-        <!-- Loan Payment Calculator -->
-        <div class="tab-pane fade show active" id="loanCalc" role="tabpanel" aria-labelledby="loan-tab">
-          <div class="text-center mb-4" data-aos="fade-up">
-            <h2 class="display-4 fw-semibold">Loan Payment Calculator</h2>
-            <p>Estimate your monthly payments, total interest, and the total amount paid.</p>
+      <!-- MAIN NAVBAR (Your original header) -->
+      <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+          <a class="navbar-brand" href="homepage.html">
+            <img src="./assets/images/Designer.png" alt="Logo" width="100" height="50">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+              <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
+              <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="legal.html" role="button" data-bs-toggle="dropdown">
+                  Legal
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="legal.html">Private Policies</a></li>
+                  <li><a class="dropdown-item" href="Compliance.html">Compliance</a></li>
+                </ul>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+            </ul>
           </div>
-          <form id="loan-calc-form">
-            <div class="mb-3">
-              <label for="loan-amount" class="form-label">Loan Amount ($)</label>
-              <input type="number" step="0.001" class="form-control" id="loan-amount" placeholder="Enter loan amount" min="100" max="10000000" required>
-              <div class="invalid-feedback" id="loan-amountFeedback"></div>
-            </div>
-            <div class="mb-3">
-              <label for="loan-interest" class="form-label">Annual Interest Rate (%)</label>
-              <input type="number" step="0.001" class="form-control" id="loan-interest" placeholder="Enter interest rate" min="0" max="50" required>
-              <div class="invalid-feedback" id="loan-interestFeedback"></div>
-            </div>
-            <div class="mb-3">
-              <label for="loan-term" class="form-label">Loan Term</label>
-              <input type="number" step="0.001" class="form-control" id="loan-term" placeholder="Enter loan term" min="1" max="50" required>
-              <select class="form-select mt-2" id="loan-term-type" required>
-                <option value="" disabled selected>Select term type</option>
-                <option value="years">Years</option>
-                <option value="months">Months</option>
-              </select>
-              <div class="invalid-feedback" id="loan-termFeedback"></div>
-            </div>
-            <button type="submit" class="btn btn-calc w-100">Calculate</button>
-            <button type="reset" class="btn btn-reset w-100 mt-3">Reset</button>
-          </form>
-          <!-- Spinner and Result for Loan Calculator -->
-          <div class="spinner-border mt-3" role="status" id="loan-spinner" style="display: none;">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-          <div id="loan-result" class="mt-4 text-center" style="display: none;"></div>
         </div>
-        
-        <!-- Cost of Retirement Calculator -->
-        <div class="tab-pane fade" id="retirementCalc" role="tabpanel" aria-labelledby="retirement-tab">
-          <div class="text-center mb-4" data-aos="fade-up">
-            <h2 class="display-4 fw-semibold">Cost of Retirement Calculator</h2>
-            <p>Estimate the retirement fund you'll need based on your expected expenses at retirement.</p>
+      </nav>
+      
+      <!-- CALCULATOR SECTION WITH HORIZONTAL BUTTON NAVIGATION -->
+      <section id="calculators" class="section-padding">
+        <div class="container">
+          <!-- Horizontal Navigation using Bootstrap Pills -->
+          <ul class="nav nav-pills justify-content-center calc-btn-group" id="calcTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active btn btn-calc" id="loan-tab" data-bs-toggle="pill" data-bs-target="#loanCalc" type="button" role="tab" aria-controls="loanCalc" aria-selected="true">
+                <i class="ri-money-dollar-circle-line"></i> Loan Calculator
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link btn btn-calc" id="retirement-tab" data-bs-toggle="pill" data-bs-target="#retirementCalc" type="button" role="tab" aria-controls="retirementCalc" aria-selected="false">
+                <i class="ri-time-line"></i> Retirement Calculator
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link btn btn-calc" id="life-tab" data-bs-toggle="pill" data-bs-target="#lifeCalc" type="button" role="tab" aria-controls="lifeCalc" aria-selected="false">
+                <i class="ri-shield-user-line"></i> Life Insurance
+              </button>
+            </li>
+          </ul>
+          
+          <!-- Calculator Forms Content -->
+          <div class="tab-content" id="calcTabContent">
+            <!-- Loan Payment Calculator -->
+            <div class="tab-pane fade show active" id="loanCalc" role="tabpanel" aria-labelledby="loan-tab">
+              <div class="text-center mb-4" data-aos="fade-up">
+                <h2 class="display-4 fw-semibold">Loan Payment Calculator</h2>
+                <p>Estimate your monthly payments, total interest, and the total amount paid.</p>
+              </div>
+              <form id="loan-calc-form">
+                <div class="mb-3">
+                  <label for="loan-amount" class="form-label">Loan Amount ($)</label>
+                  <input type="number" step="0.001" class="form-control" id="loan-amount" placeholder="Enter loan amount" min="100" max="10000000" required>
+                  <div class="invalid-feedback" id="loan-amountFeedback"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="loan-interest" class="form-label">Annual Interest Rate (%)</label>
+                  <input type="number" step="0.001" class="form-control" id="loan-interest" placeholder="Enter interest rate" min="0" max="50" required>
+                  <div class="invalid-feedback" id="loan-interestFeedback"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="loan-term" class="form-label">Loan Term</label>
+                  <input type="number" step="0.001" class="form-control" id="loan-term" placeholder="Enter loan term" min="1" max="50" required>
+                  <select class="form-select mt-2" id="loan-term-type" required>
+                    <option value="" disabled selected>Select term type</option>
+                    <option value="years">Years</option>
+                    <option value="months">Months</option>
+                  </select>
+                  <div class="invalid-feedback" id="loan-termFeedback"></div>
+                </div>
+                <button type="submit" class="btn btn-calc w-100">Calculate</button>
+                <button type="reset" class="btn btn-reset w-100 mt-3">Reset</button>
+              </form>
+              <!-- Spinner and Result for Loan Calculator -->
+              <div class="spinner-border mt-3" role="status" id="loan-spinner" style="display: none;">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div id="loan-result" class="mt-4 text-center" style="display: none;"></div>
+            </div>
+            
+            <!-- Cost of Retirement Calculator -->
+            <div class="tab-pane fade" id="retirementCalc" role="tabpanel" aria-labelledby="retirement-tab">
+              <div class="text-center mb-4" data-aos="fade-up">
+                <h2 class="display-4 fw-semibold">Cost of Retirement Calculator</h2>
+                <p>Estimate the retirement fund you'll need based on your expected expenses at retirement.</p>
+              </div>
+              <form id="retirement-calc-form">
+                <div class="mb-3">
+                  <label for="retirement-expense" class="form-label">Current Annual Expense for Retirement ($)</label>
+                  <input type="number" step="0.01" class="form-control" id="retirement-expense" placeholder="e.g., 50000" min="1" required>
+                  <div class="invalid-feedback" id="retirement-expenseFeedback"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="retirement-years" class="form-label">Years Until Retirement</label>
+                  <input type="number" step="0.01" class="form-control" id="retirement-years" placeholder="e.g., 20" min="1" required>
+                  <div class="invalid-feedback" id="retirement-yearsFeedback"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="retirement-inflation" class="form-label">Annual Inflation Rate (%)</label>
+                  <input type="number" step="0.01" class="form-control" id="retirement-inflation" placeholder="e.g., 2.5" min="0" required>
+                  <div class="invalid-feedback" id="retirement-inflationFeedback"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="retirement-withdrawal" class="form-label">Safe Withdrawal Rate (%)</label>
+                  <input type="number" step="0.01" class="form-control" id="retirement-withdrawal" placeholder="e.g., 4" min="0" required>
+                  <div class="invalid-feedback" id="retirement-withdrawalFeedback"></div>
+                </div>
+                <button type="submit" class="btn btn-calc w-100">Calculate</button>
+                <button type="reset" class="btn btn-reset w-100 mt-3">Reset</button>
+              </form>
+              <!-- Spinner and Result for Retirement Calculator -->
+              <div class="spinner-border mt-3" role="status" id="retirement-spinner" style="display: none;">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div id="retirement-result" class="mt-4 text-center" style="display: none;"></div>
+            </div>
+            
+            <!-- Life Insurance Calculator -->
+            <div class="tab-pane fade" id="lifeCalc" role="tabpanel" aria-labelledby="life-tab">
+              <div class="text-center mb-4" data-aos="fade-up">
+                <h2 class="display-4 fw-semibold">Life Insurance Calculator</h2>
+                <p>Estimate how much life insurance coverage you may need.</p>
+              </div>
+              <form id="life-calc-form">
+                <div class="mb-3">
+                  <label for="life-income" class="form-label">Annual Income ($)</label>
+                  <input type="number" step="0.01" class="form-control" id="life-income" placeholder="Enter annual income" min="1" required>
+                  <div class="invalid-feedback" id="life-incomeFeedback"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="life-years" class="form-label">Years of Support Needed</label>
+                  <input type="number" step="0.01" class="form-control" id="life-years" placeholder="Enter number of years" min="1" required>
+                  <div class="invalid-feedback" id="life-yearsFeedback"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="life-debts" class="form-label">Outstanding Debts ($)</label>
+                  <input type="number" step="0.01" class="form-control" id="life-debts" placeholder="Enter total debts" min="0" required>
+                  <div class="invalid-feedback" id="life-debtsFeedback"></div>
+                </div>
+                <div class="mb-3">
+                  <label for="life-savings" class="form-label">Current Savings/Assets ($)</label>
+                  <input type="number" step="0.01" class="form-control" id="life-savings" placeholder="Enter current savings" min="0" required>
+                  <div class="invalid-feedback" id="life-savingsFeedback"></div>
+                </div>
+                <button type="submit" class="btn btn-calc w-100">Calculate</button>
+                <button type="reset" class="btn btn-reset w-100 mt-3">Reset</button>
+              </form>
+              <!-- Spinner and Result for Life Insurance Calculator -->
+              <div class="spinner-border mt-3" role="status" id="life-spinner" style="display: none;">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div id="life-result" class="mt-4 text-center" style="display: none;"></div>
+            </div>
+          </div><!-- end tab-content -->
+        </div><!-- end container -->
+      </section>
+      
+      <!-- BUDGETING TOOLS SECTION -->
+      <section id="budgetingTools" class="section-padding">
+        <div class="container">
+          <div class="text-center section-header" data-aos="fade-up">
+            <h2 class="display-4 fw-semibold">Budgeting Tools</h2>
+            <p class="lead">Manage your money effectively with our budgeting tools.</p>
           </div>
-          <form id="retirement-calc-form">
-            <div class="mb-3">
-              <label for="retirement-expense" class="form-label">Current Annual Expense for Retirement ($)</label>
-              <input type="number" step="0.01" class="form-control" id="retirement-expense" placeholder="e.g., 50000" min="1" required>
-              <div class="invalid-feedback" id="retirement-expenseFeedback"></div>
+          <div class="row">
+            <!-- Budget Planner Card -->
+            <div class="col-12 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="card h-100 border-0 shadow-sm" style="background-color: #343a40; border-top: 3px solid #28a745;">
+                <img src="https://via.placeholder.com/600x400?text=Budget+Planner" class="card-img-top" alt="Budget Planner">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="ri-calculator-fill"></i> Budget Planner</h5>
+                  <p class="card-text">Create a monthly budget and monitor your spending to optimize your savings.</p>
+                </div>
+                <div class="card-footer bg-transparent text-center">
+                  <a href="#" class="btn btn-success">Try Budget Planner</a>
+                </div>
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="retirement-years" class="form-label">Years Until Retirement</label>
-              <input type="number" step="0.01" class="form-control" id="retirement-years" placeholder="e.g., 20" min="1" required>
-              <div class="invalid-feedback" id="retirement-yearsFeedback"></div>
+            <!-- Expense Tracker Card -->
+            <div class="col-12 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="card h-100 border-0 shadow-sm" style="background-color: #343a40; border-top: 3px solid #28a745;">
+                <img src="https://via.placeholder.com/600x400?text=Expense+Tracker" class="card-img-top" alt="Expense Tracker">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="ri-line-chart-fill"></i> Expense Tracker</h5>
+                  <p class="card-text">Track your daily expenses and analyze your spending to improve your finances.</p>
+                </div>
+                <div class="card-footer bg-transparent text-center">
+                  <a href="#" class="btn btn-success">Try Expense Tracker</a>
+                </div>
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="retirement-inflation" class="form-label">Annual Inflation Rate (%)</label>
-              <input type="number" step="0.01" class="form-control" id="retirement-inflation" placeholder="e.g., 2.5" min="0" required>
-              <div class="invalid-feedback" id="retirement-inflationFeedback"></div>
-            </div>
-            <div class="mb-3">
-              <label for="retirement-withdrawal" class="form-label">Safe Withdrawal Rate (%)</label>
-              <input type="number" step="0.01" class="form-control" id="retirement-withdrawal" placeholder="e.g., 4" min="0" required>
-              <div class="invalid-feedback" id="retirement-withdrawalFeedback"></div>
-            </div>
-            <button type="submit" class="btn btn-calc w-100">Calculate</button>
-            <button type="reset" class="btn btn-reset w-100 mt-3">Reset</button>
-          </form>
-          <!-- Spinner and Result for Retirement Calculator -->
-          <div class="spinner-border mt-3" role="status" id="retirement-spinner" style="display: none;">
-            <span class="visually-hidden">Loading...</span>
           </div>
-          <div id="retirement-result" class="mt-4 text-center" style="display: none;"></div>
         </div>
-        
-        <!-- Life Insurance Calculator -->
-        <div class="tab-pane fade" id="lifeCalc" role="tabpanel" aria-labelledby="life-tab">
-          <div class="text-center mb-4" data-aos="fade-up">
-            <h2 class="display-4 fw-semibold">Life Insurance Calculator</h2>
-            <p>Estimate how much life insurance coverage you may need.</p>
-          </div>
-          <form id="life-calc-form">
-            <div class="mb-3">
-              <label for="life-income" class="form-label">Annual Income ($)</label>
-              <input type="number" step="0.01" class="form-control" id="life-income" placeholder="Enter annual income" min="1" required>
-              <div class="invalid-feedback" id="life-incomeFeedback"></div>
-            </div>
-            <div class="mb-3">
-              <label for="life-years" class="form-label">Years of Support Needed</label>
-              <input type="number" step="0.01" class="form-control" id="life-years" placeholder="Enter number of years" min="1" required>
-              <div class="invalid-feedback" id="life-yearsFeedback"></div>
-            </div>
-            <div class="mb-3">
-              <label for="life-debts" class="form-label">Outstanding Debts ($)</label>
-              <input type="number" step="0.01" class="form-control" id="life-debts" placeholder="Enter total debts" min="0" required>
-              <div class="invalid-feedback" id="life-debtsFeedback"></div>
-            </div>
-            <div class="mb-3">
-              <label for="life-savings" class="form-label">Current Savings/Assets ($)</label>
-              <input type="number" step="0.01" class="form-control" id="life-savings" placeholder="Enter current savings" min="0" required>
-              <div class="invalid-feedback" id="life-savingsFeedback"></div>
-            </div>
-            <button type="submit" class="btn btn-calc w-100">Calculate</button>
-            <button type="reset" class="btn btn-reset w-100 mt-3">Reset</button>
-          </form>
-          <!-- Spinner and Result for Life Insurance Calculator -->
-          <div class="spinner-border mt-3" role="status" id="life-spinner" style="display: none;">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-          <div id="life-result" class="mt-4 text-center" style="display: none;"></div>
+      </section>
+      
+      <!-- FOOTER -->
+      <footer class="text-center py-4">
+        <div class="container">
+          <p>&copy; 2025 Ron Smithey. All Rights Reserved.</p>
         </div>
-      </div><!-- end tab-content -->
-    </div><!-- end container -->
-  </section>
+      </footer>
+    </main>
+  </div> <!-- End #pageWrapper -->
   
   <!-- JS Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -396,5 +529,39 @@
     // Initialize AOS for animations (if needed)
     AOS.init();
   </script>
+  
+  <!-- Additional Interactive Features -->
+  <script>
+    // Create and insert Back-to-Top Button element
+    const backToTop = document.createElement('button');
+    backToTop.id = 'backToTop';
+    backToTop.title = 'Back to Top';
+    backToTop.innerHTML = '<i class="ri-arrow-up-line"></i>';
+    document.body.appendChild(backToTop);
+    
+    // Update Scroll Progress Bar & Back-to-Top button on scroll
+    window.addEventListener('scroll', function() {
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+      document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+      
+      // Show back-to-top button when scrolled past 200px
+      if (scrollTop > 200) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+    
+    // Smooth scroll to top when back-to-top button is clicked
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+  
+  <!-- Scroll Progress Bar Element -->
+  <div id="scrollProgress"></div>
+  
 </body>
 </html>
