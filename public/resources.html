@@ -78,16 +78,6 @@
       border-color: #545b62;
       color: #fff;
     }
-    /* Scroll Progress Bar */
-    #scrollProgress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 4px;
-      background-color: #28a745;
-      width: 0%;
-      z-index: 1050;
-    }
     /* Back-to-Top Button */
     #backToTop {
       position: fixed;
@@ -147,13 +137,16 @@
       margin: 0;
       padding: 1rem 0;
     }
+    .calculator-wrapper {
+      max-width = 600px;
+      margin: 0 auto;
+    }
+    
   </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target=".navbar">
   <div id="pageWrapper">
     <main>
-      <!-- Scroll Progress Bar -->
-      <div id="scrollProgress"></div>
       
       <!-- MAIN NAVBAR (Your original header) -->
       <nav class="navbar navbar-expand-lg sticky-top">
@@ -188,6 +181,12 @@
       <!-- CALCULATOR SECTION WITH HORIZONTAL BUTTON NAVIGATION -->
       <section id="calculators" class="section-padding">
         <div class="container">
+          <!-- Calculator Section Heading -->
+          <div class="text-center mb-4" data-aos="fade-up">
+            <h2 class="h4 fw-bold mb-3 text-white">Calculator Options</h2>
+            <p class="text-light mb-4">Choose one of the financial tools below to calculate your goals.</p>
+          </div>
+
           <!-- Horizontal Navigation using Bootstrap Pills -->
           <ul class="nav nav-pills justify-content-center calc-btn-group" id="calcTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -340,7 +339,7 @@
                   <p class="card-text">Create a monthly budget and monitor your spending to optimize your savings.</p>
                 </div>
                 <div class="card-footer bg-transparent text-center">
-                  <a href="#" class="btn btn-success">Try Budget Planner</a>
+                  <a href="#" class="btn btn-calc">Try Budget Planner</a>
                 </div>
               </div>
             </div>
@@ -353,7 +352,7 @@
                   <p class="card-text">Track your daily expenses and analyze your spending to improve your finances.</p>
                 </div>
                 <div class="card-footer bg-transparent text-center">
-                  <a href="#" class="btn btn-success">Try Expense Tracker</a>
+                  <a href="#" class="btn btn-calc">Try Expense Tracker</a>
                 </div>
               </div>
             </div>
@@ -539,13 +538,9 @@
     backToTop.innerHTML = '<i class="ri-arrow-up-line"></i>';
     document.body.appendChild(backToTop);
     
-    // Update Scroll Progress Bar & Back-to-Top button on scroll
+    // Back-to-Top button on scroll
     window.addEventListener('scroll', function() {
       const scrollTop = document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrollPercent = (scrollTop / scrollHeight) * 100;
-      document.getElementById('scrollProgress').style.width = scrollPercent + '%';
-      
       // Show back-to-top button when scrolled past 200px
       if (scrollTop > 200) {
         backToTop.style.display = 'block';
@@ -559,9 +554,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
-  
-  <!-- Scroll Progress Bar Element -->
-  <div id="scrollProgress"></div>
   
 </body>
 </html>
