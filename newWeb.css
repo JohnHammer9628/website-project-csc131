@@ -411,7 +411,7 @@ footer .line {
  .calendar .weeks {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background: #f7d9c4; /* Soft pastel header */
+    background: #10100f; /* Soft pastel header */
     color: #5a3e36; /* Softer brown text */
     padding: 10px;
     border-radius: 10px;

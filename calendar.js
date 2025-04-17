@@ -16,7 +16,11 @@ let selectedDates = null;
 // Open event modal
 function openEventModal(date) {
     selectedDates = date;
+    const inputField = document.getElementById("event-name");
+    inputField.value = events[date] || "";
+    inputField.placeholder = 'Add event for ${date}';
     document.getElementById("event-modal").style.display = "block";
+    
 }
 
 // Close event modal
@@ -28,7 +32,7 @@ function closeEventModal() {
 function saveEvent() {
     const eventInput = document.getElementById("event-name").value.trim();
     if (eventInput) {
-        events[selectedDate] = eventInput;
+        events[selectedDates] = eventInput;
         localStorage.setItem("events", JSON.stringify(events));
         closeEventModal();
         renderCalendar();
@@ -39,9 +43,7 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 
 // Company Special Events
 const companyEvents = {
-    "2025-03-15": "Company Annual Meeting",
-    "2025-04-01": "New Product Launch",
-    "2025-05-10": "Employee Appreciation Day"
+    " ": " "
 };
 
 const events = JSON.parse(localStorage.getItem("events")) || {};
@@ -71,9 +73,11 @@ const renderCalendar = () => {
 
     currentDate.innerText = `${months[currMonth]} ${currYear}`;
     daysTags.innerHTML = liTag;
+    displayEvents();
 };
 
 renderCalendar();
+displayEvents();
 
 // Function to select a date
 function selectDate(event) {
@@ -100,10 +104,33 @@ function displayEvents() {
     let allEvents = { ...companyEvents, ...events };
 
     Object.keys(allEvents).sort().forEach(date => {
+        const isUserEvent = events.hasOwnProperty(date);
         let listItem = document.createElement("li");
-        listItem.innerHTML = `<strong>${date}</strong>: ${allEvents[date]}`;
+        listItem.innerHTML = `
+            <strong>${date}</strong>: ${allEvents[date]}
+            ${isUserEvent ? `<button onclick="removeEvent('${date}')" style="margin-left:10px; color: black;">Delete</button>` : ''}
+        `;
         eventContainer.appendChild(listItem);
     });
+}
+
+function removeEvent(dateKey){
+    if(events[dateKey] && confirm('Remove event for ${dataKey?}')){
+        delete events[dateKey];
+        localStorage.setItem("events", JSON.stringify(events));
+        renderCalendar();
+        displayEvents();
+    }
+}
+
+function theEvents() {
+    const eventInputVal = document.getElementById("event-name").value.trim();
+    if(eventInputVal){
+        localStorage.setItem("events", JSON.stringify(events));
+        closeEventModal();
+        renderCalendar();
+        displayEvents();
+    }
 }
 
 
@@ -122,5 +149,6 @@ prevNextIcon.forEach(icon =>{
             date = new Date();
         }
         renderCalendar();
+        theEvents();
     })
 })
