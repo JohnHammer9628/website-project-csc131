@@ -253,7 +253,33 @@
       margin: 0 auto;
     }
     
+    .carousel-control-prev,
+.carousel-control-next {
+    width: auto;
+    padding: 0 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev {
+    left: -80px; /* Move more to the left */
+}
+
+.carousel-control-next {
+    right: -80px; /* Move more to the right */
+}
+.carousel-control-next-icon,.carousel-control-prev-icon{
+    background-color: black;
+    border-radius: 50%;
+    padding: 20px;
+    background-size: 100% 100%;
+    filter: drop-shadow(0 0 5px black);
+
+}
+
   </style>
+
+  
 </head>
 <body data-bs-spy="scroll" data-bs-target=".navbar">
   <div id="pageWrapper">
@@ -274,6 +300,7 @@
               <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
               <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
               <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
+              <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="legal.html" role="button" data-bs-toggle="dropdown">
                   Legal
@@ -548,6 +575,208 @@
           </div>
         </div>
       </section>
+
+      <body data-bs-spy="scroll" data-bs-target=".navbar">
+
+        <!-- RESOURCES SECTION -->
+        <section id="resources" class="section-padding">
+            <div class="container">
+                <div class="text-center" data-aos="fade-down">
+                    <h1 class="display-4 fw-semibold">Q & A / Videos</h1>
+                    <div class ="line"></div>
+                    <p>Get all your questions answer and video guidance!</p>
+                </div>
+            </div>
+        </section>
+    
+        <!-- VIDEO GUIDES (Carousel) -->
+        <section id="video-guides" class="section-padding">
+            <div class="container">
+                <div class="line"></div>
+                <div id="videoCarousel" class="carousel slide">
+                    <div class="carousel-inner">
+                        <!-- First Row -->
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <iframe width="100%" height="215" src="https://www.youtube.com/embed/wxO0MSX9-9M?si=OBwAJRLtt8O6zmqr" frameborder="0" allowfullscreen></iframe>
+                                    <h5 class="mt-3">Understanding Personal Finance</h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <iframe width="100%" height="215" src="https://www.youtube.com/embed/AEyYoZENBWU?si=aVJkcjksq09iXtWO" frameborder="0" allowfullscreen></iframe>
+                                    <h5 class="mt-3">Investment Strategies Explained</h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <iframe width="100%" height="215" src="https://www.youtube.com/embed/fIa-K-cN7xU?si=lq1k7xYOVf5fqIB_" frameborder="0" allowfullscreen></iframe>
+                                    <h5 class="mt-3">Budgeting for Beginners</h5>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Second Row -->
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <iframe width="100%" height="215" src="https://www.youtube.com/embed/dUuOVMYk_GY?si=igr97LhcJ9VsB_qR" frameborder="0" allowfullscreen></iframe>
+                                    <h5 class="mt-3">Retirement Planning Basics</h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <iframe width="100%" height="215" src="https://www.youtube.com/embed/U4KB5eSZSB0?si=rkfP3WQOUA-GCLt5" frameborder="0" allowfullscreen></iframe>
+                                    <h5 class="mt-3">Tax-Saving Tips</h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <iframe width="100%" height="215" src="https://www.youtube.com/embed/ZifPzxIqqzE?si=kEOyIboZbGFawdlW" frameborder="0" allowfullscreen></iframe>
+                                    <h5 class="mt-3">Real Estate Investing 101</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Carousel Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#videoCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#videoCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    
+        
+    
+        <!-- FAQ Section -->
+                <div class="row mt-5">
+                    <div class="col-12 text-center">
+                        <h2 class="text-white">Frequently Asked Questions</h2>
+                        <div class ="line"></div>
+                    </div>
+                    <div class="col-md-8 offset-md-2">
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                        What services does Ron Smithee provide?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        Ron Smithee provides financial guidance, investment strategies, and business consulting services.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+         
+                                <h2 class ="accordion-header" id="headingTwo">
+                          <button class ="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">How do you create a financial plan for clients?</button>
+                          </h>
+                                <div id="collapseTwo" class="accordion-collapse collapse">
+                                    <div class ="accordion-body"><p>Each client's financial situation is unique.I start out by gathering all relevant financial details, identifying key priorities and then crafting a step-by-step strategy to achieve their financial goals.</p></div>
+                          </div>
+                          </div>
+                          
+                          <div class="accordion-item">
+                               <h2 class ="accordion-header" id="headingThree">
+                          <button class ="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">What should I do with my old 401(k)?</button>
+                          </h>
+                                <div id ="collapseThree" class="accordion-collapse collapse">
+                                    <div class="accordion-body"><p>If you have a 401(k) from a previous employer, you may consider rolling it over to an IRA, doing a Roth conversion for tax-free growth, or other strategies based on your goals.</p></div>
+                          </div>
+                          </div>
+                          
+                          
+                          <div class="accordion-item">
+                               <h2 class ="accordion-header" id="headingFour">
+                          <button class ="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">How do you help clients maximize tax efficiency?</button>
+                          </h>
+                                <div id ="collapseFour" class="accordion-collapse collapse">
+                                    <div class ="accordion-body"><p>I help clients use tax-efficient strategies such as Roth conversions, tax-advantaged accounts, and investment allocations to reduce tax liabilities and grow wealth over time.</p></div>
+                          </div>
+                          </div>
+                          
+                          <div class="accordion-item">
+                               <h2 class ="accordion-header" id="headingFive">
+                          <button class ="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">What types of insurance do you recommend?</button>
+                          </h>
+                                <div id ="collapseFive" class="accordion-collapse collapse">
+                                    <div class="accordion-body"><p>Depending on your situation, I may recommend life insurance, disability insurance, or long-term care plans to protect your financial future.</p></div>
+                          </div>
+                          </div>
+                          
+                          
+                          <div class="accordion-item">
+                               <h2 class ="accordion-header" id="headingSix">
+                          <button class ="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix">Can you help with estate planning?</button>
+                          </h>
+                                <div id ="collapseSix" class="accordion-collapse collapse">
+                                    <div class ="accordion-body"><p>Yes, I work with estate planning attorneys to help clients set up wills, trusts, and other legal structures to protect and transfer wealth efficiently.</p></div>
+                          </div>
+                          </div>
+                          
+                          <div class="accordion-item">
+                               <h2 class ="accordion-header" id="headingSeven">
+                          <button class ="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven">What other professionals do you work with?</button>
+                          </h>
+                                <div id ="collapseSeven" class="accordion-collapse collapse">
+                                    <div class="accordion-body"><p>I collaborate with CPAs, real estate advisors, business consultants, and top lenders to provide comprehensive financial planning.</p></div>
+                          </div>
+                          </div>
+                          
+                          
+                          
+    
+    
+    
+    
+    
+    
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingEight">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight">
+                                        How can I book a consultation?
+                                    </button>
+                                </h2>
+                                <div id="collapseEight" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        You can book a consultation by visiting our <a href="contact.html">Contact Us</a> page and filling out the form.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingNine">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine">
+                                        Are your financial guides free?
+                                    </button>
+                                </h2>
+                                <div id="collapseNine" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        Yes, we offer free guides and premium consulting services.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+    
+        </script>
+    </body>
+            <section id="resources" class="section-padding">
+              <div class="container">
+                  <div class="text-center" data-aos="fade-down">
+                      <div class ="line"></div>
+                  </div>
+              </div>
+          </section>
       
       <!-- FOOTER -->
       <footer class="text-center py-4">
@@ -1032,6 +1261,8 @@
       </div>
     </div>
   </div>
+
+  
   
   <!-- JS Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
