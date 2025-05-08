@@ -477,4 +477,74 @@ footer .line {
 }
 
 
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+ gmp-map {
+    display: block;
+    width: 400px;      /* or whatever width you want */
+    height: 400px;
+    margin: 0 auto;    /* centers horizontally */
+  }
 
+  gmp-marker {
+    background: hotpink;
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+  
+  /* Optional: Makes the sample page fill the window. */
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 1. The flex wrapper */
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;       /* allows stacking on narrow screens */
+  gap: 2rem;             /* space between form & map */
+}
+
+/* 2. Form & map each take up equal space */
+.contactForm,
+.map-container {
+  flex: 1 1 300px;       /* grow & shrink, min‐width ~300px */
+}
+
+/* 3. Make sure the map fills its container */
+.map-container gmp-map {
+  display: block;        /* custom elements need block to size */
+  width: 100%;
+  height: 400px;         /* or whatever height you prefer */
+}
+
+/* 4. Optional: style the form */
+.contactForm form {
+  display: flex;
+  flex-direction: column;
+}
+.contactForm label {
+  margin-top: 1rem;
+}
+.contactForm input,
+.contactForm textarea {
+  padding: .5rem;
+  margin-top: .25rem;
+  font-size: 1rem;
+}
+.contactForm button {
+  margin-top: 1rem;
+  padding: .75rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* 5. Responsive tweak: stack vertically under 600px */
+@media (max-width: 600px) {
+  .contact-container {
+    flex-direction: column;
+  }
+}
