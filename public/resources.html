@@ -562,16 +562,16 @@
                 </div>
               </div>
             </div>
-            <!-- Expense Tracker Card -->
+            <!-- Coming Soon Card (Replacing Expense Tracker) -->
             <div class="col-12 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
               <div class="card h-100 border-0 shadow-sm" style="background-color: #343a40; border-top: 3px solid #28a745;">
-                <img src="./assets/images/expensetracking.jpg" class="card-img-top" alt="Expense Tracker" style="height: 220px; object-fit: cover; object-position: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <img src="./assets/images/Expense Tracker.png" class="card-img-top" alt="Expense Tracker" style="height: 220px; object-fit: cover; object-position: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
                 <div class="card-body">
-                  <h5 class="card-title"><i class="ri-line-chart-fill"></i> Expense Tracker</h5>
-                  <p class="card-text">Track your daily expenses and analyze your spending to improve your finances.</p>
+                  <h5 class="card-title"><i class="ri-line-chart-fill"></i> Coming Soon</h5>
+                  <p class="card-text">New financial tools are in development and will be available in the next update.</p>
                 </div>
                 <div class="card-footer bg-transparent text-center">
-                  <a href="javascript:void(0);" class="btn btn-calc" id="openExpenseTracker">Try Expense Tracker</a>
+                  <a href="javascript:void(0);" class="btn btn-calc" data-bs-toggle="modal" data-bs-target="#comingSoonModal">Learn More</a>
                 </div>
               </div>
             </div>
@@ -908,7 +908,7 @@
     </div>
   </div>
   
-  <!-- BUDGET PLANNER MODAL -->
+  <!-- Budget Planner Modal -->
   <div class="modal fade" id="budgetPlannerModal" tabindex="-1" aria-labelledby="budgetPlannerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content bg-dark text-light">
@@ -1077,8 +1077,185 @@
                       </div>
                     </div>
                     
-                    <!-- Add remaining expense categories in the same pattern... -->
-                    <!-- For brevity, I'm including just a few categories, but would add all nine categories in the final implementation -->
+                    <!-- Utilities Expenses -->
+                    <div class="expense-category-group" id="utilities-expenses" style="display:none;">
+                      <div class="card bg-dark border-secondary mb-3">
+                        <div class="card-header bg-dark">
+                          <h6 class="mb-0 text-white-50">💡 Utilities Expenses</h6>
+                        </div>
+                        <div class="card-body py-3">
+                          <div class="expense-item mb-2">
+                            <div class="input-group">
+                              <span class="input-group-text bg-dark border-secondary text-success"><i class="ri-lightbulb-line"></i></span>
+                              <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Electricity" value="Electricity" readonly>
+                              <input type="number" class="form-control expense-amount bg-dark border-secondary text-light" placeholder="Amount" min="0" step="0.01">
+                              <button type="button" class="btn btn-outline-danger delete-expense" style="display:none;"><i class="ri-delete-bin-line"></i></button>
+                            </div>
+                          </div>
+                          <div class="expense-item mb-2">
+                            <div class="input-group">
+                              <span class="input-group-text bg-dark border-secondary text-success"><i class="ri-water-flash-line"></i></span>
+                              <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Water" value="Water" readonly>
+                              <input type="number" class="form-control expense-amount bg-dark border-secondary text-light" placeholder="Amount" min="0" step="0.01">
+                              <button type="button" class="btn btn-outline-danger delete-expense" style="display:none;"><i class="ri-delete-bin-line"></i></button>
+                            </div>
+                          </div>
+                          <button type="button" class="btn btn-outline-secondary btn-sm add-expense mt-2" data-category="utilities">
+                            <i class="ri-add-line me-2"></i>Add Utilities Expense
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Healthcare Expenses -->
+                    <div class="expense-category-group" id="healthcare-expenses" style="display:none;">
+                      <div class="card bg-dark border-secondary mb-3">
+                        <div class="card-header bg-dark">
+                          <h6 class="mb-0 text-white-50">🏥 Healthcare Expenses</h6>
+                        </div>
+                        <div class="card-body py-3">
+                          <div class="expense-item mb-2">
+                            <div class="input-group">
+                              <span class="input-group-text bg-dark border-secondary text-success"><i class="ri-mental-health-line"></i></span>
+                              <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Insurance" value="Insurance" readonly>
+                              <input type="number" class="form-control expense-amount bg-dark border-secondary text-light" placeholder="Amount" min="0" step="0.01">
+                              <button type="button" class="btn btn-outline-danger delete-expense" style="display:none;"><i class="ri-delete-bin-line"></i></button>
+                            </div>
+                          </div>
+                          <div class="expense-item mb-2">
+                            <div class="input-group">
+                              <span class="input-group-text bg-dark border-secondary text-success"><i class="ri-medicine-bottle-line"></i></span>
+                              <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Medications" value="Medications" readonly>
+                              <input type="number" class="form-control expense-amount bg-dark border-secondary text-light" placeholder="Amount" min="0" step="0.01">
+                              <button type="button" class="btn btn-outline-danger delete-expense" style="display:none;"><i class="ri-delete-bin-line"></i></button>
+                            </div>
+                          </div>
+                          <button type="button" class="btn btn-outline-secondary btn-sm add-expense mt-2" data-category="healthcare">
+                            <i class="ri-add-line me-2"></i>Add Healthcare Expense
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Entertainment Expenses -->
+                    <div class="expense-category-group" id="entertainment-expenses" style="display:none;">
+                      <div class="card bg-dark border-secondary mb-3">
+                        <div class="card-header bg-dark">
+                          <h6 class="mb-0 text-white-50">🎬 Entertainment Expenses</h6>
+                        </div>
+                        <div class="card-body py-3">
+                          <div class="expense-item mb-2">
+                            <div class="input-group">
+                              <span class="input-group-text bg-dark border-secondary text-success"><i class="ri-movie-2-line"></i></span>
+                              <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Streaming Services" value="Streaming Services" readonly>
+                              <input type="number" class="form-control expense-amount bg-dark border-secondary text-light" placeholder="Amount" min="0" step="0.01">
+                              <button type="button" class="btn btn-outline-danger delete-expense" style="display:none;"><i class="ri-delete-bin-line"></i></button>
+                            </div>
+                          </div>
+                          <div class="expense-item mb-2">
+                            <div class="input-group">
+                              <span class="input-group-text bg-dark border-secondary text-success"><i class="ri-gamepad-line"></i></span>
+                              <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Hobbies" value="Hobbies" readonly>
+                              <input type="number" class="form-control expense-amount bg-dark border-secondary text-light" placeholder="Amount" min="0" step="0.01">
+                              <button type="button" class="btn btn-outline-danger delete-expense" style="display:none;"><i class="ri-delete-bin-line"></i></button>
+                            </div>
+                          </div>
+                          <button type="button" class="btn btn-outline-secondary btn-sm add-expense mt-2" data-category="entertainment">
+                            <i class="ri-add-line me-2"></i>Add Entertainment Expense
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Debt Expenses -->
+                    <div class="expense-category-group" id="debt-expenses" style="display:none;">
+                      <div class="card bg-dark border-secondary mb-3">
+                        <div class="card-header bg-dark">
+                          <h6 class="mb-0 text-white-50">💳 Debt Payments</h6>
+                        </div>
+                        <div class="card-body py-3">
+                          <div class="expense-item mb-2">
+                            <div class="input-group">
+                              <span class="input-group-text bg-dark border-secondary text-success"><i class="ri-bank-card-line"></i></span>
+                              <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Credit Card" value="Credit Card" readonly>
+                              <input type="number" class="form-control expense-amount bg-dark border-secondary text-light" placeholder="Amount" min="0" step="0.01">
+                              <button type="button" class="btn btn-outline-danger delete-expense" style="display:none;"><i class="ri-delete-bin-line"></i></button>
+                            </div>
+                          </div>
+                          <div class="expense-item mb-2">
+                            <div class="input-group">
+                              <span class="input-group-text bg-dark border-secondary text-success"><i class="ri-book-open-line"></i></span>
+                              <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Student Loan" value="Student Loan" readonly>
+                              <input type="number" class="form-control expense-amount bg-dark border-secondary text-light" placeholder="Amount" min="0" step="0.01">
+                              <button type="button" class="btn btn-outline-danger delete-expense" style="display:none;"><i class="ri-delete-bin-line"></i></button>
+                            </div>
+                          </div>
+                          <button type="button" class="btn btn-outline-secondary btn-sm add-expense mt-2" data-category="debt">
+                            <i class="ri-add-line me-2"></i>Add Debt Payment
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Savings Expenses -->
+                    <div class="expense-category-group" id="savings-expenses" style="display:none;">
+                      <div class="card bg-dark border-secondary mb-3">
+                        <div class="card-header bg-dark">
+                          <h6 class="mb-0 text-white-50">💰 Savings</h6>
+                        </div>
+                        <div class="card-body py-3">
+                          <div class="expense-item mb-2">
+                            <div class="input-group">
+                              <span class="input-group-text bg-dark border-secondary text-success"><i class="ri-safe-2-line"></i></span>
+                              <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Emergency Fund" value="Emergency Fund" readonly>
+                              <input type="number" class="form-control expense-amount bg-dark border-secondary text-light" placeholder="Amount" min="0" step="0.01">
+                              <button type="button" class="btn btn-outline-danger delete-expense" style="display:none;"><i class="ri-delete-bin-line"></i></button>
+                            </div>
+                          </div>
+                          <div class="expense-item mb-2">
+                            <div class="input-group">
+                              <span class="input-group-text bg-dark border-secondary text-success"><i class="ri-funds-line"></i></span>
+                              <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Investments" value="Investments" readonly>
+                              <input type="number" class="form-control expense-amount bg-dark border-secondary text-light" placeholder="Amount" min="0" step="0.01">
+                              <button type="button" class="btn btn-outline-danger delete-expense" style="display:none;"><i class="ri-delete-bin-line"></i></button>
+                            </div>
+                          </div>
+                          <button type="button" class="btn btn-outline-secondary btn-sm add-expense mt-2" data-category="savings">
+                            <i class="ri-add-line me-2"></i>Add Savings
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Other Expenses -->
+                    <div class="expense-category-group" id="other-expenses" style="display:none;">
+                      <div class="card bg-dark border-secondary mb-3">
+                        <div class="card-header bg-dark">
+                          <h6 class="mb-0 text-white-50">📦 Other Expenses</h6>
+                        </div>
+                        <div class="card-body py-3">
+                          <div class="expense-item mb-2">
+                            <div class="input-group">
+                              <span class="input-group-text bg-dark border-secondary text-success"><i class="ri-shopping-bag-line"></i></span>
+                              <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Personal Care" value="Personal Care" readonly>
+                              <input type="number" class="form-control expense-amount bg-dark border-secondary text-light" placeholder="Amount" min="0" step="0.01">
+                              <button type="button" class="btn btn-outline-danger delete-expense" style="display:none;"><i class="ri-delete-bin-line"></i></button>
+                            </div>
+                          </div>
+                          <div class="expense-item mb-2">
+                            <div class="input-group">
+                              <span class="input-group-text bg-dark border-secondary text-success"><i class="ri-gift-line"></i></span>
+                              <input type="text" class="form-control bg-dark border-secondary text-light" placeholder="Gifts/Donations" value="Gifts/Donations" readonly>
+                              <input type="number" class="form-control expense-amount bg-dark border-secondary text-light" placeholder="Amount" min="0" step="0.01">
+                              <button type="button" class="btn btn-outline-danger delete-expense" style="display:none;"><i class="ri-delete-bin-line"></i></button>
+                            </div>
+                          </div>
+                          <button type="button" class="btn btn-outline-secondary btn-sm add-expense mt-2" data-category="other">
+                            <i class="ri-add-line me-2"></i>Add Other Expense
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </form>
                 </div>
               </div>
@@ -1359,7 +1536,6 @@
   </div>
 
   
-  
   <!-- JS Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
@@ -1442,9 +1618,7 @@
       document.getElementById('loan-result').style.display = 'none';
     });
     
-    // -------------------------------
     // Cost of Retirement Calculator
-    // -------------------------------
     document.getElementById('retirement-expense').addEventListener('input', preventScientificNotation);
     document.getElementById('retirement-years').addEventListener('input', preventScientificNotation);
     document.getElementById('retirement-inflation').addEventListener('input', preventScientificNotation);
@@ -1479,9 +1653,7 @@
       document.getElementById('retirement-result').style.display = 'none';
     });
     
-    // -----------------------------
     // Life Insurance Calculator
-    // -----------------------------
     document.getElementById('life-income').addEventListener('input', preventScientificNotation);
     document.getElementById('life-years').addEventListener('input', preventScientificNotation);
     document.getElementById('life-debts').addEventListener('input', preventScientificNotation);
@@ -1517,9 +1689,7 @@
       document.getElementById('life-result').style.display = 'none';
     });
     
-    // -----------------------------
     // Mortgage Calculator
-    // -----------------------------
     document.getElementById('mortgage-price').addEventListener('input', preventScientificNotation);
     document.getElementById('mortgage-down').addEventListener('input', preventScientificNotation);
     document.getElementById('mortgage-interest').addEventListener('input', preventScientificNotation);
@@ -1613,40 +1783,10 @@
     AOS.init();
   </script>
   
-  <!-- Expense Tracker JavaScript -->
+  <!-- Budget Planner JavaScript -->
   <script>
-    // Handle expense tracker button click
+    // Handle budget planner button click
     document.addEventListener('DOMContentLoaded', function() {
-      // Handle expense tracker button
-      const expenseTrackerBtn = document.getElementById('openExpenseTracker');
-      if (expenseTrackerBtn) {
-        expenseTrackerBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const expenseTrackerModal = document.getElementById('expenseTrackerModal');
-          if (expenseTrackerModal) {
-            const modal = new bootstrap.Modal(expenseTrackerModal);
-            
-            // Set up one-time initialization
-            if (!window.expenseTrackerInitialized) {
-              expenseTrackerModal.addEventListener('shown.bs.modal', function() {
-                initExpenseTracker();
-              }, { once: true }); // Only run once
-              window.expenseTrackerInitialized = true;
-            }
-            
-            modal.show();
-          }
-        });
-      }
-      
-      // Handle back to top button
-      const backToTopBtn = document.getElementById('backToTopFixed');
-      if (backToTopBtn) {
-        backToTopBtn.addEventListener('click', function() {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      }
-      
       // Handle budget planner button
       const budgetPlannerBtn = document.getElementById('openBudgetPlanner');
       if (budgetPlannerBtn) {
@@ -1668,40 +1808,55 @@
           }
         });
       }
+      
+      // Handle back to top button
+      const backToTopBtn = document.getElementById('backToTopFixed');
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', function() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
     });
     
-    // Expense Tracker functionality
-    function initExpenseTracker() {
-      console.log("Initializing expense tracker");
+    // Budget Planner Functionality
+    function initBudgetPlanner() {
+      console.log("Initializing budget planner");
       
       // ----- DOM Elements -----
-      const addExpenseForm = document.getElementById('addExpenseForm');
-      const filterExpensesForm = document.getElementById('filterExpensesForm');
-      const filterDateRange = document.getElementById('filterDateRange');
-      const customDateRange = document.getElementById('customDateRange');
-      const expenseList = document.getElementById('expenseList');
-      const clearAllExpenses = document.getElementById('clearAllExpenses');
-      const exportExpenseData = document.getElementById('exportExpenseData');
-      const printExpenseReport = document.getElementById('printExpenseReport');
-      const expenseCount = document.getElementById('expenseCount');
+      const incomeForm = document.getElementById('incomeForm');
+      const expensesForm = document.getElementById('expensesForm');
+      const expenseCategory = document.getElementById('expenseCategory');
+      const addIncomeBtn = document.getElementById('addIncomeBtn');
+      const calculateBudgetBtn = document.getElementById('calculateBudgetBtn');
+      const saveBudgetBtn = document.getElementById('saveBudgetBtn');
+      const printBudgetBtn = document.getElementById('printBudgetBtn');
+      const totalIncomeEl = document.getElementById('totalIncome');
+      const totalExpensesEl = document.getElementById('totalExpenses');
+      const budgetBalanceEl = document.getElementById('budgetBalance');
+      const budgetChartCanvas = document.getElementById('budgetChart');
       
       // Verify all required elements exist
-      if (!addExpenseForm || !filterExpensesForm || !expenseList) {
-        console.error("Critical expense tracker elements missing");
+      if (!incomeForm || !expensesForm || !addIncomeBtn || !calculateBudgetBtn) {
+        console.error("Critical budget planner elements missing");
         return;
       }
       
-      // Chart elements
-      const categoryChartCanvas = document.getElementById('expenseCategoryChart');
-      const trendChartCanvas = document.getElementById('expenseTrendChart');
-      
       // ----- State Variables -----
-      let expenses = [];
-      let filteredExpenses = [];
-      let categoryChart = null;
-      let trendChart = null;
-      let isInEditMode = false;
-      let currentEditId = null;
+      let budgetData = {
+        income: [],
+        expenses: {
+          housing: [],
+          transportation: [],
+          food: [],
+          utilities: [],
+          healthcare: [],
+          entertainment: [],
+          debt: [],
+          savings: [],
+          other: []
+        }
+      };
+      let budgetChart = null;
       
       // ----- Utility Functions -----
       function formatCurrency(amount) {
@@ -1711,388 +1866,245 @@
         }).format(amount);
       }
       
-      function getCategoryEmoji(category) {
-        const emojiMap = {
-          food: '🍔',
-          transportation: '🚗',
-          entertainment: '🎬',
-          shopping: '🛍️',
-          utilities: '💡',
-          housing: '🏠',
-          healthcare: '🏥',
-          education: '📚',
-          personal: '👤',
-          other: '📦'
-        };
-        return emojiMap[category] || '📋';
-      }
-      
-      function formatDate(dateString) {
-        const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-        return new Date(dateString).toLocaleDateString('en-US', options);
-      }
-      
       // ----- Initialization -----
       function init() {
-        // Set default date to today
-        document.getElementById('expenseDate').valueAsDate = new Date();
+        // Load saved budget data from localStorage
+        loadBudgetData();
         
-        // Set default filter to "all time"
-        if (filterDateRange) {
-          filterDateRange.value = 'all';
-        }
+        // Initialize chart
+        initChart();
         
-        // Load saved expenses from localStorage
-        loadExpenses();
-        
-        // Initialize charts
-        initCharts();
-        
-        // Attach event handlers
+        // Set up event handlers
         setupEventHandlers();
+        
+        // Show initial data
+        renderIncome();
+        showExpenseCategory(expenseCategory.value);
+        calculateBudget();
       }
       
       // ----- Event Handlers -----
       function setupEventHandlers() {
-        // Form submission handlers
-        if (addExpenseForm) {
-          addExpenseForm.addEventListener('submit', handleAddExpense);
+        // Add income button
+        if (addIncomeBtn) {
+          addIncomeBtn.addEventListener('click', addIncomeItem);
         }
         
-        if (filterExpensesForm) {
-          filterExpensesForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            applyFilters();
+        // Expense category selection
+        if (expenseCategory) {
+          expenseCategory.addEventListener('change', function() {
+            showExpenseCategory(this.value);
           });
         }
         
-        // Filter date range change
-        if (filterDateRange && customDateRange) {
-          filterDateRange.addEventListener('change', function() {
-            customDateRange.style.display = this.value === 'custom' ? 'block' : 'none';
-            if (this.value !== 'custom') {
-              applyFilters();
-            }
+        // Add expense buttons
+        const addExpenseBtns = document.querySelectorAll('.add-expense');
+        addExpenseBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            const category = this.dataset.category;
+            addExpenseItem(category);
+          });
+        });
+        
+        // Calculate budget button
+        if (calculateBudgetBtn) {
+          calculateBudgetBtn.addEventListener('click', function() {
+            collectFormData();
+            calculateBudget();
           });
         }
         
-        // Clear all expenses
-        if (clearAllExpenses) {
-          clearAllExpenses.addEventListener('click', function() {
-            if (confirm('Are you sure you want to delete all expenses? This cannot be undone.')) {
-              expenses = [];
-              localStorage.setItem('expenseTrackerData', JSON.stringify(expenses));
-              applyFilters();
-            }
+        // Save budget button
+        if (saveBudgetBtn) {
+          saveBudgetBtn.addEventListener('click', function() {
+            collectFormData();
+            saveBudgetData();
+            alert('Budget data saved successfully!');
           });
         }
         
-        // Export data
-        if (exportExpenseData) {
-          exportExpenseData.addEventListener('click', exportExpenses);
-        }
-        
-        // Print report
-        if (printExpenseReport) {
-          printExpenseReport.addEventListener('click', function() {
+        // Print budget button
+        if (printBudgetBtn) {
+          printBudgetBtn.addEventListener('click', function() {
             window.print();
           });
         }
         
-        // Expense list event delegation for edit/delete buttons
-        if (expenseList) {
-          expenseList.addEventListener('click', function(e) {
-            const target = e.target.closest('button');
-            if (!target) return;
-            
-            const expenseItem = target.closest('.list-group-item');
-            if (!expenseItem) return;
-            
-            const expenseId = expenseItem.dataset.id;
-            
-            if (target.classList.contains('edit-expense')) {
-              editExpense(expenseId);
-            } else if (target.classList.contains('delete-expense')) {
-              deleteExpense(expenseId);
+        // Event delegation for removing income/expense items
+        document.addEventListener('click', function(e) {
+          if (e.target.closest('.delete-income')) {
+            const incomeItem = e.target.closest('.income-item');
+            if (incomeItem && incomeItem.parentNode.querySelectorAll('.income-item').length > 1) {
+              incomeItem.remove();
             }
-          });
-        }
+          }
+          
+          if (e.target.closest('.delete-expense')) {
+            const expenseItem = e.target.closest('.expense-item');
+            if (expenseItem && expenseItem.parentNode.querySelectorAll('.expense-item').length > 2) {
+              expenseItem.remove();
+            }
+          }
+        });
       }
       
       // ----- Core Functions -----
-      function handleAddExpense(e) {
-        e.preventDefault();
+      function addIncomeItem() {
+        const incomeItems = incomeForm.querySelector('.income-item');
+        const newItem = incomeItems.cloneNode(true);
         
-        // Get form values
-        const description = document.getElementById('expenseDescription').value.trim();
-        const amountInput = document.getElementById('expenseAmount').value;
-        const amount = parseFloat(amountInput);
-        const category = document.getElementById('expenseCategory').value;
-        const date = document.getElementById('expenseDate').value;
-        const notes = document.getElementById('expenseNotes').value.trim();
+        // Clear values
+        newItem.querySelectorAll('input').forEach(input => {
+          input.value = '';
+        });
         
-        // Validate inputs
-        if (!description) {
-          alert("Please enter a description");
-          return false;
+        // Show delete button
+        const deleteBtn = newItem.querySelector('.delete-income');
+        if (deleteBtn) {
+          deleteBtn.style.display = 'block';
         }
         
-        if (!amountInput || isNaN(amount) || amount <= 0) {
-          alert("Please enter a valid amount");
-          return false;
+        // Add to form
+        incomeItems.parentNode.appendChild(newItem);
+      }
+      
+      function addExpenseItem(category) {
+        const expenseCategoryGroup = document.getElementById(`${category}-expenses`);
+        if (!expenseCategoryGroup) return;
+        
+        const existingItems = expenseCategoryGroup.querySelectorAll('.expense-item');
+        if (existingItems.length === 0) return;
+        
+        const lastItem = existingItems[existingItems.length - 1];
+        const newItem = lastItem.cloneNode(true);
+        
+        // Reset inputs
+        const descInput = newItem.querySelector('input[type="text"]');
+        const amountInput = newItem.querySelector('input[type="number"]');
+        
+        if (descInput) {
+          descInput.value = '';
+          descInput.readOnly = false;
+          descInput.placeholder = 'Enter description';
         }
         
-        if (!category) {
-          alert("Please select a category");
-          return false;
+        if (amountInput) {
+          amountInput.value = '';
         }
         
-        if (!date) {
-          alert("Please select a date");
-          return false;
+        // Show delete button
+        const deleteBtn = newItem.querySelector('.delete-expense');
+        if (deleteBtn) {
+          deleteBtn.style.display = 'block';
         }
         
-        if (isInEditMode && currentEditId) {
-          // Update existing expense
-          const index = expenses.findIndex(exp => exp.id === currentEditId);
-          if (index !== -1) {
-            expenses[index] = {
-              ...expenses[index],
-              description,
-              amount,
-              category, 
-              date,
-              notes
-            };
-            
-            // Exit edit mode
-            isInEditMode = false;
-            currentEditId = null;
-            
-            // Update button text
-            const submitBtn = addExpenseForm.querySelector('button[type="submit"]');
-            submitBtn.textContent = 'Add Expense';
-            submitBtn.classList.remove('btn-warning');
-          }
-        } else {
-          // Add new expense
-          const newExpense = {
-            id: Date.now().toString(36) + Math.random().toString(36).substring(2),
-            description,
-            amount,
-            category,
-            date,
-            notes,
-            timestamp: new Date().toISOString()
-          };
+        // Add to form
+        const cardBody = lastItem.parentNode;
+        cardBody.insertBefore(newItem, cardBody.lastElementChild);
+      }
+      
+      function showExpenseCategory(category) {
+        // Hide all categories
+        const allCategories = document.querySelectorAll('.expense-category-group');
+        allCategories.forEach(cat => {
+          cat.style.display = 'none';
+        });
+        
+        // Show selected category
+        const selectedCategory = document.getElementById(`${category}-expenses`);
+        if (selectedCategory) {
+          selectedCategory.style.display = 'block';
+        }
+      }
+      
+      function collectFormData() {
+        // Collect Income Data
+        budgetData.income = [];
+        const incomeItems = incomeForm.querySelectorAll('.income-item');
+        incomeItems.forEach(item => {
+          const sourceInput = item.querySelector('input[type="text"]');
+          const amountInput = item.querySelector('.income-amount, input[type="number"]');
           
-          expenses.push(newExpense);
-        }
-        
-        // Save to localStorage
-        localStorage.setItem('expenseTrackerData', JSON.stringify(expenses));
-        
-        // Reset form
-        addExpenseForm.reset();
-        document.getElementById('expenseDate').valueAsDate = new Date();
-        
-        // Apply filters and update UI
-        filterDateRange.value = 'all'; // Show all expenses including the new one
-        applyFilters();
-        
-        return false;
-      }
-      
-      function loadExpenses() {
-        const savedExpenses = localStorage.getItem('expenseTrackerData');
-        if (savedExpenses) {
-          try {
-            expenses = JSON.parse(savedExpenses);
-            console.log(`Loaded ${expenses.length} expenses from localStorage`);
-          } catch (error) {
-            console.error('Error parsing saved expenses:', error);
-            expenses = [];
-          }
-        } else {
-          console.log("No saved expenses found");
-          expenses = [];
-        }
-        
-        applyFilters();
-      }
-      
-      function applyFilters() {
-        const dateRangeValue = filterDateRange ? filterDateRange.value : 'all';
-        const categoryValue = document.getElementById('filterCategory') ? 
-                              document.getElementById('filterCategory').value : 'all';
-        const minAmount = document.getElementById('filterMinAmount') && document.getElementById('filterMinAmount').value ? 
-                         parseFloat(document.getElementById('filterMinAmount').value) : 0;
-        const maxAmount = document.getElementById('filterMaxAmount') && document.getElementById('filterMaxAmount').value ? 
-                         parseFloat(document.getElementById('filterMaxAmount').value) : Infinity;
-        
-        // Calculate date range
-        let startDate, endDate;
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        
-        switch (dateRangeValue) {
-          case 'today':
-            startDate = today;
-            endDate = new Date(today);
-            endDate.setHours(23, 59, 59, 999);
-            break;
-          case 'week':
-            startDate = new Date(today);
-            startDate.setDate(today.getDate() - today.getDay());
-            endDate = new Date(startDate);
-            endDate.setDate(startDate.getDate() + 6);
-            endDate.setHours(23, 59, 59, 999);
-            break;
-          case 'month':
-            startDate = new Date(today.getFullYear(), today.getMonth(), 1);
-            endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-            endDate.setHours(23, 59, 59, 999);
-            break;
-          case 'year':
-            startDate = new Date(today.getFullYear(), 0, 1);
-            endDate = new Date(today.getFullYear(), 11, 31);
-            endDate.setHours(23, 59, 59, 999);
-            break;
-          case 'custom':
-            startDate = document.getElementById('filterStartDate') && document.getElementById('filterStartDate').value ? 
-                      new Date(document.getElementById('filterStartDate').value) : new Date(0);
-            endDate = document.getElementById('filterEndDate') && document.getElementById('filterEndDate').value ? 
-                    new Date(document.getElementById('filterEndDate').value) : new Date(8640000000000000);
-            endDate.setHours(23, 59, 59, 999);
-            break;
-          default: // all
-            startDate = new Date(0);
-            endDate = new Date(8640000000000000);
-        }
-        
-        // Apply all filters
-        filteredExpenses = expenses.filter(expense => {
-          try {
-            const expenseDate = new Date(expense.date);
-            const expenseAmount = expense.amount;
-            
-            // Date range filter
-            const dateInRange = expenseDate >= startDate && expenseDate <= endDate;
-            
-            // Category filter
-            const categoryMatch = categoryValue === 'all' || expense.category === categoryValue;
-            
-            // Amount range filter
-            const amountInRange = expenseAmount >= minAmount && expenseAmount <= maxAmount;
-            
-            return dateInRange && categoryMatch && amountInRange;
-          } catch (e) {
-            console.error("Error filtering expense:", expense, e);
-            return false;
+          if (sourceInput && amountInput && sourceInput.value && amountInput.value) {
+            budgetData.income.push({
+              source: sourceInput.value,
+              amount: parseFloat(amountInput.value) || 0
+            });
           }
         });
         
-        // Sort by date (newest first)
-        filteredExpenses.sort((a, b) => new Date(b.date) - new Date(a.date));
+        console.log("Collected income data:", budgetData.income);
         
-        // Update UI
-        updateUI();
-      }
-      
-      function updateUI() {
-        // Update expense count
-        if (expenseCount) {
-          expenseCount.textContent = `${filteredExpenses.length} expense${filteredExpenses.length !== 1 ? 's' : ''}`;
-        }
-        
-        // Render expense list
-        renderExpenseList();
-        
-        // Update summary
-        updateSummary();
-        
-        // Update charts
-        updateCharts();
-      }
-      
-      function renderExpenseList() {
-        if (!expenseList) return;
-        
-        if (filteredExpenses.length === 0) {
-          expenseList.innerHTML = `
-            <div class="text-center p-4 text-muted">
-              <i class="ri-inbox-line d-block mb-3" style="font-size: 2rem;"></i>
-              <p>No expenses to show for the selected filters.</p>
-            </div>
-          `;
-          return;
-        }
-        
-        // Clear the current list
-        expenseList.innerHTML = '';
-        
-        // Add expense items
-        filteredExpenses.forEach(expense => {
-          // Create expense item element
-          const expenseItem = document.createElement('div');
-          expenseItem.className = 'list-group-item bg-dark text-light border-secondary';
-          expenseItem.dataset.id = expense.id;
+        // Collect Expense Data
+        const categories = Object.keys(budgetData.expenses);
+        categories.forEach(category => {
+          budgetData.expenses[category] = [];
           
-          const emoji = getCategoryEmoji(expense.category);
-          const formattedDate = formatDate(expense.date);
+          const categoryGroup = document.getElementById(`${category}-expenses`);
+          if (!categoryGroup) return;
           
-          expenseItem.innerHTML = `
-            <div class="d-flex w-100 justify-content-between align-items-center">
-              <div>
-                <h6 class="mb-1">${emoji} ${expense.description}</h6>
-                <p class="mb-0 small text-muted">${formattedDate}</p>
-              </div>
-              <div class="text-end">
-                <h5 class="mb-0 text-danger">${formatCurrency(expense.amount)}</h5>
-              </div>
-            </div>
-            ${expense.notes ? `<p class="mb-1 small text-white-50 mt-2">${expense.notes}</p>` : ''}
-            <div class="d-flex mt-2 justify-content-end gap-2">
-              <button class="btn btn-outline-secondary btn-sm edit-expense">
-                <i class="ri-edit-line me-1"></i>Edit
-              </button>
-              <button class="btn btn-outline-danger btn-sm delete-expense">
-                <i class="ri-delete-bin-line me-1"></i>Delete
-              </button>
-            </div>
-          `;
-          
-          expenseList.appendChild(expenseItem);
+          const expenseItems = categoryGroup.querySelectorAll('.expense-item');
+          expenseItems.forEach(item => {
+            const descInput = item.querySelector('input[type="text"]');
+            const amountInput = item.querySelector('.expense-amount, input[type="number"]');
+            
+            if (descInput && amountInput && descInput.value && amountInput.value) {
+              budgetData.expenses[category].push({
+                description: descInput.value,
+                amount: parseFloat(amountInput.value) || 0
+              });
+            }
+          });
         });
+        
+        console.log("Collected expense data:", budgetData.expenses);
       }
       
-      function updateSummary() {
-        const totalPeriodExpensesEl = document.getElementById('totalPeriodExpenses');
-        const averageDailyExpensesEl = document.getElementById('averageDailyExpenses');
+      function calculateBudget() {
+        collectFormData();
         
-        if (!totalPeriodExpensesEl || !averageDailyExpensesEl) return;
+        // Calculate total income
+        const totalIncome = budgetData.income.reduce((sum, item) => sum + item.amount, 0);
         
         // Calculate total expenses
-        const totalExpenses = filteredExpenses.reduce((total, expense) => total + expense.amount, 0);
-        totalPeriodExpensesEl.textContent = formatCurrency(totalExpenses);
+        let totalExpenses = 0;
+        const categories = Object.keys(budgetData.expenses);
+        const categoryTotals = {};
         
-        // Calculate daily average
-        if (filteredExpenses.length > 0) {
-          // Get unique dates
-          const uniqueDates = new Set(filteredExpenses.map(e => e.date.split('T')[0]));
-          const uniqueDaysCount = uniqueDates.size;
-          
-          const dailyAverage = totalExpenses / Math.max(1, uniqueDaysCount);
-          averageDailyExpensesEl.textContent = formatCurrency(dailyAverage);
+        categories.forEach(category => {
+          const categoryTotal = budgetData.expenses[category].reduce((sum, item) => sum + item.amount, 0);
+          categoryTotals[category] = categoryTotal;
+          totalExpenses += categoryTotal;
+        });
+        
+        console.log("Category totals:", categoryTotals);
+        console.log("Total expenses:", totalExpenses);
+        
+        // Calculate balance
+        const balance = totalIncome - totalExpenses;
+        
+        // Update UI
+        totalIncomeEl.textContent = formatCurrency(totalIncome);
+        totalExpensesEl.textContent = formatCurrency(totalExpenses);
+        
+        // Set balance color based on value
+        if (balance >= 0) {
+          budgetBalanceEl.className = 'fw-bold fs-4 text-success';
         } else {
-          averageDailyExpensesEl.textContent = formatCurrency(0);
+          budgetBalanceEl.className = 'fw-bold fs-4 text-danger';
         }
+        budgetBalanceEl.textContent = formatCurrency(balance);
+        
+        // Update chart
+        updateChart(totalExpenses);
+        
+        // Update budget tips
+        updateBudgetTips(totalIncome, totalExpenses, balance);
       }
       
-      function initCharts() {
-        // Check if chart elements exist
-        if (!categoryChartCanvas || !trendChartCanvas) {
-          console.log("Chart canvases not found");
+      function initChart() {
+        if (!budgetChartCanvas) {
+          console.log("Budget chart canvas not found");
           return;
         }
         
@@ -2103,17 +2115,31 @@
         }
         
         try {
-          // Initialize category chart
-          categoryChart = new Chart(categoryChartCanvas, {
+          // Destroy existing chart if it exists
+          if (budgetChart) {
+            budgetChart.destroy();
+          }
+          
+          // Updated color palette with more distinct colors
+          const chartColors = [
+            '#28a745', // Green (Housing)
+            '#007bff', // Blue (Transportation)
+            '#fd7e14', // Orange (Food)
+            '#6f42c1', // Purple (Utilities)
+            '#e83e8c', // Pink (Healthcare)
+            '#ffc107', // Yellow (Entertainment)
+            '#dc3545', // Red (Debt)
+            '#20c997', // Teal (Savings)
+            '#6c757d'  // Gray (Other)
+          ];
+          
+          budgetChart = new Chart(budgetChartCanvas, {
             type: 'doughnut',
             data: {
               labels: [],
               datasets: [{
                 data: [],
-                backgroundColor: [
-                  '#28a745', '#218838', '#1e7e34', '#5cb85c', '#75c378',
-                  '#86d17b', '#1b5e20', '#a5d6a7', '#43a047', '#4caf50'
-                ],
+                backgroundColor: chartColors,
                 borderWidth: 1
               }]
             },
@@ -2129,181 +2155,306 @@
                       size: 11
                     }
                   }
-                }
-              }
-            }
-          });
-          
-          // Initialize trend chart
-          trendChart = new Chart(trendChartCanvas, {
-            type: 'line',
-            data: {
-              labels: [],
-              datasets: [{
-                label: 'Daily Expenses',
-                data: [],
-                borderColor: '#28a745',
-                backgroundColor: 'rgba(40, 167, 69, 0.1)',
-                tension: 0.4,
-                fill: true
-              }]
-            },
-            options: {
-              responsive: true,
-              maintainAspectRatio: false,
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  ticks: {
-                    color: '#e2e2e2'
-                  },
-                  grid: {
-                    color: 'rgba(255, 255, 255, 0.1)'
-                  }
                 },
-                x: {
-                  ticks: {
-                    color: '#e2e2e2'
-                  },
-                  grid: {
-                    color: 'rgba(255, 255, 255, 0.1)'
+                tooltip: {
+                  callbacks: {
+                    label: function(context) {
+                      const label = context.label || '';
+                      const value = context.raw || 0;
+                      const total = context.chart.getDatasetMeta(0).total;
+                      const percentage = Math.round((value / total) * 100);
+                      return `${label}: ${formatCurrency(value)} (${percentage}%)`;
+                    }
                   }
-                }
-              },
-              plugins: {
-                legend: {
-                  display: false
                 }
               }
             }
           });
           
-          console.log("Charts initialized successfully");
+          console.log("Budget chart initialized successfully");
         } catch (error) {
-          console.error("Error initializing charts:", error);
+          console.error("Error initializing budget chart:", error);
         }
       }
       
-      function updateCharts() {
-        if (!categoryChart || !trendChart) {
-          console.log("Charts not initialized");
-          return;
+      function updateChart(totalExpenses) {
+        if (!budgetChart) {
+          console.log("Budget chart not initialized, attempting to initialize");
+          initChart();
+          if (!budgetChart) return;
         }
         
         try {
-          // Update Category Chart
-          const categories = {};
-          filteredExpenses.forEach(expense => {
-            categories[expense.category] = (categories[expense.category] || 0) + expense.amount;
-          });
-          
           const categoryLabels = [];
           const categoryData = [];
-          
-          Object.keys(categories).forEach(category => {
-            const emoji = getCategoryEmoji(category);
-            const name = category.charAt(0).toUpperCase() + category.slice(1);
-            categoryLabels.push(`${emoji} ${name}`);
-            categoryData.push(categories[category]);
-          });
-          
-          categoryChart.data.labels = categoryLabels;
-          categoryChart.data.datasets[0].data = categoryData;
-          categoryChart.update();
-          
-          // Update Trend Chart - Group by date
-          const dateGroups = {};
-          filteredExpenses.forEach(expense => {
-            const date = expense.date.split('T')[0];
-            dateGroups[date] = (dateGroups[date] || 0) + expense.amount;
-          });
-          
-          // Sort dates and prepare data
-          const sortedDates = Object.keys(dateGroups).sort();
-          const trendLabels = sortedDates.map(date => {
-            const d = new Date(date);
-            return `${d.getMonth() + 1}/${d.getDate()}`;
-          });
-          
-          const trendData = sortedDates.map(date => dateGroups[date]);
-          
-          trendChart.data.labels = trendLabels;
-          trendChart.data.datasets[0].data = trendData;
-          trendChart.update();
-        } catch (error) {
-          console.error("Error updating charts:", error);
-        }
-      }
-      
-      function editExpense(id) {
-        const expense = expenses.find(e => e.id === id);
-        if (!expense) return;
-        
-        // Set form values
-        document.getElementById('expenseDescription').value = expense.description;
-        document.getElementById('expenseAmount').value = expense.amount;
-        document.getElementById('expenseCategory').value = expense.category;
-        document.getElementById('expenseDate').value = expense.date;
-        document.getElementById('expenseNotes').value = expense.notes || '';
-        
-        // Set edit mode
-        isInEditMode = true;
-        currentEditId = id;
-        
-        // Update button text
-        const submitBtn = addExpenseForm.querySelector('button[type="submit"]');
-        submitBtn.textContent = 'Update Expense';
-        submitBtn.classList.add('btn-warning');
-        
-        // Scroll to form
-        addExpenseForm.scrollIntoView({ behavior: 'smooth' });
-      }
-      
-      function deleteExpense(id) {
-        // Remove confirmation dialog as requested by user
-        const index = expenses.findIndex(e => e.id === id);
-        if (index !== -1) {
-          expenses.splice(index, 1);
-          localStorage.setItem('expenseTrackerData', JSON.stringify(expenses));
-          applyFilters();
-        }
-      }
-      
-      function exportExpenses() {
-        // Create CSV content
-        const headers = ['Date', 'Description', 'Category', 'Amount', 'Notes'];
-        const rows = [headers.join(',')];
-        
-        filteredExpenses.forEach(expense => {
-          const row = [
-            expense.date,
-            `"${expense.description.replace(/"/g, '""')}"`, // Escape quotes
-            `"${expense.category}"`,
-            expense.amount,
-            `"${expense.notes ? expense.notes.replace(/"/g, '""') : ''}"`
+          // Updated color palette with more distinct colors
+          const categoryColors = [
+            '#28a745', // Green (Housing)
+            '#007bff', // Blue (Transportation)
+            '#fd7e14', // Orange (Food)
+            '#6f42c1', // Purple (Utilities)
+            '#e83e8c', // Pink (Healthcare)
+            '#ffc107', // Yellow (Entertainment)
+            '#dc3545', // Red (Debt)
+            '#20c997', // Teal (Savings)
+            '#6c757d'  // Gray (Other)
           ];
-          rows.push(row.join(','));
-        });
-        
-        const csvContent = rows.join('\n');
-        
-        // Create download link
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.setAttribute('href', url);
-        link.setAttribute('download', 'expense_data.csv');
-        link.style.visibility = 'hidden';
-        
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+          
+          // Color mapping for specific categories to ensure consistency
+          const categoryColorMap = {
+            'housing': '#28a745',
+            'transportation': '#007bff',
+            'food': '#fd7e14',
+            'utilities': '#6f42c1',
+            'healthcare': '#e83e8c',
+            'entertainment': '#ffc107',
+            'debt': '#dc3545',
+            'savings': '#20c997',
+            'other': '#6c757d'
+          };
+                    console.log("Updating chart with expense data:", budgetData.expenses);
+          
+          // Get expense amounts by category
+          const categories = Object.keys(budgetData.expenses);
+          
+          // First collect all valid categories with expenses
+          const validCategories = categories.filter(category => {
+            const categoryExpenses = budgetData.expenses[category];
+            const categoryTotal = categoryExpenses.reduce((sum, item) => {
+              const amount = parseFloat(item.amount) || 0;
+              return sum + amount;
+            }, 0);
+            return categoryTotal > 0;
+          });
+          
+          console.log("Valid categories with expenses:", validCategories);
+          
+          // Then generate chart data with assigned colors
+          const assignedColors = [];
+          
+          validCategories.forEach((category, index) => {
+            const categoryExpenses = budgetData.expenses[category];
+            const categoryTotal = categoryExpenses.reduce((sum, item) => {
+              const amount = parseFloat(item.amount) || 0;
+              return sum + amount;
+            }, 0);
+            
+            console.log(`Category ${category} total: ${categoryTotal}`);
+            
+            let label = category.charAt(0).toUpperCase() + category.slice(1);
+            
+            // Add emoji to category
+            switch(category) {
+              case 'housing': label = '🏠 ' + label; break;
+              case 'transportation': label = '🚗 ' + label; break;
+              case 'food': label = '🍔 ' + label; break;
+              case 'utilities': label = '💡 ' + label; break;
+              case 'healthcare': label = '🏥 ' + label; break;
+              case 'entertainment': label = '🎬 ' + label; break;
+              case 'debt': label = '💳 ' + label; break;
+              case 'savings': label = '💰 ' + label; break;
+              case 'other': label = '📦 ' + label; break;
+            }
+            
+            categoryLabels.push(label);
+            categoryData.push(categoryTotal);
+            
+            // Assign the mapped color if available, otherwise use the default color array
+            if (categoryColorMap[category]) {
+              assignedColors.push(categoryColorMap[category]);
+            } else {
+              assignedColors.push(categoryColors[index % categoryColors.length]);
+            }
+          });
+          
+          console.log("Chart data prepared:", {labels: categoryLabels, data: categoryData, colors: assignedColors});
+          
+          // Handle case with no data
+          if (categoryData.length === 0) {
+            categoryLabels.push('No Expenses');
+            categoryData.push(1);
+            assignedColors.push('#6c757d'); // Gray for no data
+          }
+          
+          // Update chart data
+          budgetChart.data.labels = categoryLabels;
+          budgetChart.data.datasets[0].data = categoryData;
+          budgetChart.data.datasets[0].backgroundColor = assignedColors;
+          budgetChart.update();
+          console.log("Chart updated successfully");
+        } catch (error) {
+          console.error("Error updating budget chart:", error);
+        }
       }
       
-      // Start the expense tracker
+      function updateBudgetTips(income, expenses, balance) {
+        const tipsContainer = document.getElementById('budgetTips');
+        if (!tipsContainer) return;
+        
+        // Clear existing tips
+        tipsContainer.innerHTML = '';
+        
+        const tips = [];
+        
+        // Add general tips
+        tips.push('The 50/30/20 rule suggests spending 50% on needs, 30% on wants, and 20% on savings.');
+        
+        // Add specific tips based on budget
+        if (balance < 0) {
+          tips.push('Your expenses exceed your income. Consider reducing non-essential spending.');
+          tips.push('Try to identify areas where you can cut back to balance your budget.');
+        } else if (balance === 0) {
+          tips.push('Your budget is balanced, but consider setting aside money for savings.');
+          tips.push('Even a small emergency fund can help with unexpected expenses.');
+        } else {
+          tips.push('Great job! You have a positive balance. Consider putting some toward savings or debt reduction.');
+          
+          // If balance is more than 20% of income
+          if (balance > income * 0.2) {
+            tips.push('You have a significant surplus. Consider investing or increasing retirement contributions.');
+          }
+        }
+        
+        // Housing cost tip
+        const housingExpenses = budgetData.expenses.housing.reduce((sum, item) => sum + item.amount, 0);
+        if (housingExpenses > income * 0.3) {
+          tips.push('Your housing costs exceed 30% of your income, which is higher than recommended.');
+        }
+        
+        // Entertainment/discretionary spending tip
+        const entertainmentExpenses = budgetData.expenses.entertainment.reduce((sum, item) => sum + item.amount, 0);
+        if (entertainmentExpenses > income * 0.15) {
+          tips.push('Your entertainment budget is relatively high. Consider if some of this could be redirected to savings.');
+        }
+        
+        // Add tips to UI (limit to 3)
+        tips.slice(0, 3).forEach(tip => {
+          const tipCard = document.createElement('div');
+          tipCard.className = 'tip-card p-3 mb-2 rounded bg-dark border border-secondary';
+          tipCard.innerHTML = `<p class="mb-0 small"><i class="ri-information-line me-2 text-success"></i>${tip}</p>`;
+          tipsContainer.appendChild(tipCard);
+        });
+      }
+      
+      function loadBudgetData() {
+        const savedData = localStorage.getItem('budgetPlannerData');
+        if (savedData) {
+          try {
+            budgetData = JSON.parse(savedData);
+            console.log("Loaded budget data from localStorage");
+            
+            // Populate the form with saved data
+            renderIncome();
+            renderExpenses();
+          } catch (error) {
+            console.error("Error loading budget data:", error);
+          }
+        }
+      }
+      
+      function saveBudgetData() {
+        localStorage.setItem('budgetPlannerData', JSON.stringify(budgetData));
+        console.log("Budget data saved to localStorage");
+      }
+      
+      function renderIncome() {
+        // Clear existing income items except the first one
+        const incomeItems = incomeForm.querySelectorAll('.income-item');
+        for (let i = 1; i < incomeItems.length; i++) {
+          incomeItems[i].remove();
+        }
+        
+        // Reset the first income item
+        const firstItem = incomeItems[0];
+        if (firstItem) {
+          const sourceInput = firstItem.querySelector('input[type="text"]');
+          const amountInput = firstItem.querySelector('.income-amount, input[type="number"]');
+          
+          if (sourceInput) sourceInput.value = '';
+          if (amountInput) amountInput.value = '';
+        }
+        
+        // Add income items from saved data
+        budgetData.income.forEach((income, index) => {
+          if (index === 0 && firstItem) {
+            // Use the first item for the first income
+            const sourceInput = firstItem.querySelector('input[type="text"]');
+            const amountInput = firstItem.querySelector('.income-amount, input[type="number"]');
+            
+            if (sourceInput) sourceInput.value = income.source;
+            if (amountInput) amountInput.value = income.amount;
+          } else {
+            // Add new items for additional incomes
+            addIncomeItem();
+            
+            const newItems = incomeForm.querySelectorAll('.income-item');
+            const newItem = newItems[newItems.length - 1];
+            
+            const sourceInput = newItem.querySelector('input[type="text"]');
+            const amountInput = newItem.querySelector('.income-amount, input[type="number"]');
+            
+            if (sourceInput) sourceInput.value = income.source;
+            if (amountInput) amountInput.value = income.amount;
+            
+            // Show delete button
+            const deleteBtn = newItem.querySelector('.delete-income');
+            if (deleteBtn) {
+              deleteBtn.style.display = 'block';
+            }
+          }
+        });
+      }
+      
+      function renderExpenses() {
+        const categories = Object.keys(budgetData.expenses);
+        
+        categories.forEach(category => {
+          const expenses = budgetData.expenses[category];
+          if (expenses.length === 0) return;
+          
+          // Get the expense category group
+          const categoryGroup = document.getElementById(`${category}-expenses`);
+          if (!categoryGroup) return;
+          
+          // Clear existing expense items except the predefined ones
+          const existingItems = categoryGroup.querySelectorAll('.expense-item');
+          const defaultCount = existingItems.length;
+          
+          // Reset default items
+          for (let i = 0; i < Math.min(defaultCount, expenses.length); i++) {
+            const item = existingItems[i];
+            const descInput = item.querySelector('input[type="text"]');
+            const amountInput = item.querySelector('.expense-amount, input[type="number"]');
+            
+            if (amountInput) amountInput.value = expenses[i].amount;
+          }
+          
+          // Add additional items as needed
+          for (let i = defaultCount; i < expenses.length; i++) {
+            addExpenseItem(category);
+            
+            const newItems = categoryGroup.querySelectorAll('.expense-item');
+            const newItem = newItems[newItems.length - 1];
+            
+            const descInput = newItem.querySelector('input[type="text"]');
+            const amountInput = newItem.querySelector('.expense-amount, input[type="number"]');
+            
+            if (descInput) descInput.value = expenses[i].description;
+            if (amountInput) amountInput.value = expenses[i].amount;
+            
+            // Show delete button
+            const deleteBtn = newItem.querySelector('.delete-expense');
+            if (deleteBtn) {
+              deleteBtn.style.display = 'block';
+            }
+          }
+        });
+      }
+      
+      // Start the budget planner
       init();
     }
   </script>
-  
 </body>
 </html>
+
