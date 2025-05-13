@@ -1,199 +1,259 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
-  // Initialize Firebase
-  const app = firebase.app();
-  const db = firebase.firestore();
-  const storage = firebase.storage();
-  const auth = firebase.auth();
+  console.log("📄 DOMContentLoaded fired.");
 
-  // DOM Elements
-  const uploadForm = document.getElementById("upload-form");
-  const newsletterFileInput = document.getElementById("newsletter-file");
-  const uploadMessage = document.getElementById("upload-message");
-  const newsletterDropdown = document.getElementById("newsletter-dropdown");
-  const deleteButton = document.getElementById("delete-newsletter-button");
-  const deleteMessage = document.getElementById("delete-message");
-  const leaveButton = document.getElementById("leave-button");
-
-  console.log("Firebase initialized:", app.name);
-
-  // Check if the user is authenticated
-  auth.onAuthStateChanged((user) => {
-    if (!user) {
-      console.log("User not authenticated. Redirecting to articles.html...");
-      window.location.href = "articles.html";
-    } else {
-      console.log("User authenticated:", user.email);
-    }
-  });
-
-  // Handle Leave Button (sign out)
-  leaveButton.addEventListener("click", () => {
-    auth.signOut()
-      .then(() => {
-        console.log("Signed out successfully. Redirecting to articles.html...");
-        window.location.href = "articles.html";
-      })
-      .catch((error) => {
-        console.error("Sign-out error:", error);
-        uploadMessage.textContent = "Error signing out. Please try again.";
-        uploadMessage.style.color = "red";
-      });
-  });
-
-  // Handle Newsletter Upload
-  uploadForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const file = newsletterFileInput.files[0];
-    const newsletterLink = document.getElementById("newsletter-link").value.trim();
-    const newsletterNameInput = document.getElementById("newsletter-name").value.trim();
-
-    if (!file && !newsletterLink) {
-      console.log("No file or link provided.");
-      uploadMessage.textContent = "Please provide a file or a link.";
-      uploadMessage.style.color = "red";
-      return;
-    }
-
-    if (file) {
-      console.log("File selected:", file.name);
-      const storageRef = storage.ref(`newsletters/${file.name}`);
-      console.log("Uploading file to Firebase Storage...");
-
-      storageRef.put(file)
-        .then((snapshot) => {
-          console.log("File uploaded successfully. Getting download URL...");
-          return snapshot.ref.getDownloadURL();
-        })
-        .then((url) => {
-          console.log("Download URL:", url);
-          console.log("Saving newsletter metadata to Firestore...");
-          return db.collection("newsletters").add({
-            name: newsletterNameInput ? newsletterNameInput : file.name,
-            url: url,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          });
-        })
-        .then(() => {
-          console.log("Newsletter metadata saved to Firestore.");
-          uploadMessage.textContent = "Newsletter uploaded successfully!";
-          uploadMessage.style.color = "green";
-          // Clear form fields
-          newsletterFileInput.value = "";
-          document.getElementById("newsletter-link").value = "";
-          document.getElementById("newsletter-name").value = "";
-          populateNewsletterDropdown(); // Refresh dropdown list
-        })
-        .catch((error) => {
-          console.error("Error during upload process:", error);
-          uploadMessage.textContent = "An error occurred. Please try again.";
-          uploadMessage.style.color = "red";
-        });
-    } else if (newsletterLink) {
-      console.log("Using provided link:", newsletterLink);
-      db.collection("newsletters").add({
-        name: newsletterNameInput ? newsletterNameInput : newsletterLink,
-        url: newsletterLink,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      })
-      .then(() => {
-        console.log("Newsletter metadata saved with link.");
-        uploadMessage.textContent = "Newsletter linked successfully!";
-        uploadMessage.style.color = "green";
-        document.getElementById("newsletter-link").value = "";
-        document.getElementById("newsletter-name").value = "";
-        populateNewsletterDropdown(); // Refresh dropdown list
-      })
-      .catch((error) => {
-        console.error("Error saving newsletter metadata:", error);
-        uploadMessage.textContent = "An error occurred. Please try again.";
-        uploadMessage.style.color = "red";
-      });
-    }
-  });
-
-  // Populate the dropdown with newsletters from Firestore
-  function populateNewsletterDropdown() {
-    console.log("Populating newsletter dropdown...");
-    newsletterDropdown.innerHTML = ""; // Clear existing options
-    db.collection("newsletters")
-      .orderBy("timestamp", "desc")
-      .get()
-      .then((querySnapshot) => {
-        if (querySnapshot.empty) {
-          console.log("No newsletters found.");
-          const option = document.createElement("option");
-          option.text = "No newsletters available";
-          option.value = "";
-          newsletterDropdown.add(option);
-        } else {
-          querySnapshot.forEach((doc) => {
-            const newsletter = doc.data();
-            const option = document.createElement("option");
-            option.value = doc.id;
-            option.text = newsletter.name;
-            // Store the newsletter URL in a data attribute
-            option.setAttribute("data-url", newsletter.url);
-            newsletterDropdown.add(option);
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("Error loading newsletters for dropdown:", error);
-        deleteMessage.textContent = "Error loading newsletters. Please try again.";
-        deleteMessage.style.color = "red";
-      });
+  // --- Firebase init ---
+  let app, db, storage, auth;
+  try {
+    app     = firebase.app();
+    db      = firebase.firestore();
+    storage = firebase.storage();
+    auth    = firebase.auth();
+    console.log("🔧 Firebase initialized:", app.name);
+  } catch(err) {
+    console.error("❌ Firebase init failed:", err);
+    return;
   }
 
-  // Handle deletion of selected newsletter
-  deleteButton.addEventListener("click", () => {
-    const selectedOption = newsletterDropdown.options[newsletterDropdown.selectedIndex];
-    const newsletterId = selectedOption.value;
-    const newsletterUrl = selectedOption.getAttribute("data-url");
+  // --- DOM refs & sanity checks ---
+  const uploadForm           = document.getElementById("upload-form");
+  const newsletterFileInput  = document.getElementById("newsletter-file");
+  const newsletterLinkInput  = document.getElementById("newsletter-link");
+  const newsletterNameInput  = document.getElementById("newsletter-name");
+  const uploadMessage        = document.getElementById("upload-message");
+  const newsletterDropdown   = document.getElementById("newsletter-dropdown");
+  const deleteButton         = document.getElementById("delete-newsletter-button");
+  const deleteMessage        = document.getElementById("delete-message");
+  const leaveButton          = document.getElementById("leave-button");
 
-    if (!newsletterId) {
-      deleteMessage.textContent = "No newsletter selected.";
-      deleteMessage.style.color = "red";
-      return;
-    }
-
-    if (confirm("Are you sure you want to delete the selected newsletter?")) {
-      // Delete from Firestore
-      db.collection("newsletters")
-        .doc(newsletterId)
-        .delete()
-        .then(() => {
-          console.log("Newsletter deleted from Firestore:", newsletterId);
-          // If the newsletter was uploaded as a file, delete it from Firebase Storage
-          if (newsletterUrl.startsWith("https://firebasestorage.googleapis.com")) {
-            const fileRef = storage.refFromURL(newsletterUrl);
-            fileRef.delete()
-              .then(() => {
-                console.log("File deleted from Firebase Storage:", newsletterUrl);
-                deleteMessage.textContent = "Newsletter deleted successfully!";
-                deleteMessage.style.color = "green";
-                populateNewsletterDropdown();
-              })
-              .catch((error) => {
-                console.error("Error deleting file from Firebase Storage:", error);
-                deleteMessage.textContent = "Error deleting file. Please try again.";
-                deleteMessage.style.color = "red";
-              });
-          } else {
-            deleteMessage.textContent = "Newsletter deleted successfully!";
-            deleteMessage.style.color = "green";
-            populateNewsletterDropdown();
-          }
-        })
-        .catch((error) => {
-          console.error("Error deleting newsletter from Firestore:", error);
-          deleteMessage.textContent = "Error deleting newsletter. Please try again.";
-          deleteMessage.style.color = "red";
-        });
-    }
+  console.log("📌 DOM elements:", {
+    uploadForm,
+    newsletterFileInput,
+    newsletterLinkInput,
+    newsletterNameInput,
+    uploadMessage,
+    newsletterDropdown,
+    deleteButton,
+    deleteMessage,
+    leaveButton
   });
 
-  // Initial load of the dropdown
-  populateNewsletterDropdown();
+  if (!newsletterDropdown) {
+    console.error("❌ #newsletter-dropdown not found—your delete‐list will never show!");
+  }
+
+  // --- Admin whitelist ---
+  const ALLOWED_EMAILS = [
+    "jcaycedo423@gmail.com",
+    "admin2@yourdomain.com"
+  ];
+  console.log("🔒 ALLOWED_EMAILS:", ALLOWED_EMAILS);
+
+  // --- Auth guard ---
+  auth.onAuthStateChanged(async (user) => {
+    console.log("🗝️ onAuthStateChanged:", user?.email || user);
+
+    if (!user) {
+      console.log("↪ no user → redirect");
+      return window.location.href = "articles.html";
+    }
+    if (!ALLOWED_EMAILS.includes(user.email)) {
+      console.warn("🚫 unauthorized:", user.email);
+      alert("🚫 You’re not an admin.");
+      try { await auth.signOut(); } catch(e){ console.error("signOut err",e); }
+      return window.location.href = "articles.html";
+    }
+
+    console.log("✅ authorized:", user.email);
+    initAdminPanel();
+    await populateNewsletterDropdown();
+  });
+
+  // --- Wire up UI ---
+  function initAdminPanel() {
+    console.log("🛠️ initAdminPanel");
+
+    // Leave
+    if (leaveButton) {
+      console.log("➤ binding leaveButton");
+      leaveButton.addEventListener("click", async () => {
+        console.log("🔓 leaveButton clicked");
+        try {
+          await auth.signOut();
+          window.location.href = "articles.html";
+        } catch(e) {
+          console.error("signOut error:", e);
+          if (uploadMessage) {
+            uploadMessage.textContent = "Error signing out.";
+            uploadMessage.style.color = "red";
+          }
+        }
+      });
+    } else {
+      console.warn("⚠️ leaveButton missing");
+    }
+
+    // Upload
+    if (uploadForm) {
+      console.log("➤ binding uploadForm");
+      uploadForm.addEventListener("submit", async e => {
+        console.log("🚀 uploadForm.submit fired");
+        e.preventDefault();
+        if (!uploadMessage) return console.warn("⚠️ no uploadMessage elem");
+
+        uploadMessage.textContent = "";
+        uploadMessage.style.color = "";
+
+        const file = newsletterFileInput?.files[0];
+        const link = newsletterLinkInput?.value.trim();
+        const name = newsletterNameInput?.value.trim() || (file?.name || link);
+
+        console.log("📋 values:", { file, link, name });
+
+        if (!file && !link) {
+          console.warn("⚠️ nothing provided");
+          uploadMessage.textContent = "Please provide a file or a link.";
+          uploadMessage.style.color = "red";
+          return;
+        }
+
+        try {
+          let url;
+          if (file) {
+            console.log("⬆️ uploading file:", file.name);
+            const ref  = storage.ref(`newsletters/${file.name}`);
+            const snap = await ref.put(file);
+            console.log("✔️ storage.put done", snap);
+            url = await snap.ref.getDownloadURL();
+            console.log("🔗 downloadURL:", url);
+          } else {
+            console.log("🔗 link upload:", link);
+            url = link;
+          }
+
+          console.log("💾 writing Firestore doc");
+          await db.collection("newsletters").add({
+            name,
+            url,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+          });
+          console.log("✔️ Firestore write complete");
+
+          uploadMessage.textContent = "Uploaded successfully!";
+          uploadMessage.style.color = "green";
+          newsletterFileInput.value = "";
+          newsletterLinkInput.value = "";
+          newsletterNameInput.value = "";
+
+          console.log("🔄 repopulate dropdown after upload");
+          await populateNewsletterDropdown();
+        } catch(err) {
+          console.error("❌ upload error:", err);
+          uploadMessage.textContent = "Upload failed, check console.";
+          uploadMessage.style.color = "red";
+        }
+      });
+    } else {
+      console.warn("⚠️ uploadForm missing");
+    }
+
+    // Delete
+    if (deleteButton) {
+      console.log("➤ binding deleteButton");
+      deleteButton.addEventListener("click", async () => {
+        console.log("🗑️ deleteButton clicked");
+        if (!deleteMessage) return console.warn("⚠️ no deleteMessage elem");
+        deleteMessage.textContent = "";
+
+        if (!newsletterDropdown) {
+          console.warn("⚠️ no newsletterDropdown!");
+          return;
+        }
+
+        const opt = newsletterDropdown.options[newsletterDropdown.selectedIndex];
+        console.log("🎯 selected opt:", opt);
+        const id  = opt?.value;
+        const url = opt?.dataset.url;
+
+        if (!id) {
+          deleteMessage.textContent = "No newsletter selected.";
+          deleteMessage.style.color = "red";
+          return;
+        }
+        if (!confirm("Delete permanently?")) {
+          console.log("⛔ user cancelled");
+          return;
+        }
+
+        try {
+          console.log("🗑️ deleting Firestore doc", id);
+          await db.collection("newsletters").doc(id).delete();
+          if (url?.startsWith("https://firebasestorage.googleapis.com")) {
+            console.log("🗑️ deleting storage file", url);
+            await storage.refFromURL(url).delete();
+          }
+          deleteMessage.textContent = "Deleted successfully!";
+          deleteMessage.style.color = "green";
+          console.log("🔄 repopulate dropdown after delete");
+          await populateNewsletterDropdown();
+        } catch(err) {
+          console.error("❌ deletion error:", err);
+          deleteMessage.textContent = "Deletion failed, check console.";
+          deleteMessage.style.color = "red";
+        }
+      });
+    } else {
+      console.warn("⚠️ deleteButton missing");
+    }
+  }
+
+  // --- Populate dropdown ---
+  async function populateNewsletterDropdown() {
+    console.log("📥 populateNewsletterDropdown start");
+    if (!newsletterDropdown) {
+      console.warn("⚠️ cannot populate, no dropdown");
+      return;
+    }
+    newsletterDropdown.innerHTML = "";
+
+    const placeholder = document.createElement("option");
+    placeholder.value       = "";
+    placeholder.textContent = "Loading newsletters…";
+    placeholder.disabled    = true;
+    placeholder.selected    = true;
+    newsletterDropdown.appendChild(placeholder);
+
+    try {
+      const snap = await db
+        .collection("newsletters")
+        .orderBy("timestamp", "desc")
+        .get();
+      console.log(`✔️ snapshot received (${snap.size} docs)`);
+
+      newsletterDropdown.innerHTML = "";
+      if (snap.empty) {
+        console.log("ℹ️ no newsletters found");
+        const o = document.createElement("option");
+        o.value       = "";
+        o.textContent = "No newsletters available";
+        o.disabled    = true;
+        newsletterDropdown.appendChild(o);
+        return;
+      }
+
+      snap.forEach(doc => {
+        const data = doc.data();
+        console.log("📄 doc:", doc.id, data);
+        const o = document.createElement("option");
+        o.value       = doc.id;
+        o.textContent = data.name;
+        o.dataset.url = data.url;
+        newsletterDropdown.appendChild(o);
+      });
+      console.log("🔄 dropdown populated");
+    } catch(err) {
+      console.error("❌ populateNewsletterDropdown error:", err);
+      deleteMessage.textContent = "Load failed; check console.";
+      deleteMessage.style.color = "red";
+    }
+  }
 });

@@ -66,25 +66,33 @@
 </head>
 
 <body data-bs-spy="scroll" data-bs-target=".navbar">
-  <!-- NAVBAR -->
+  <!-- MAIN NAVBAR (Your original header) -->
   <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
       <a class="navbar-brand" href="homepage.html">
-        <img src="./assets/images/Designer.png" alt="" width="100" height="50">
+        <img src="./assets/images/Designer.png" alt="Logo" width="100" height="50">
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a>
+            <div class="dropdown-menu">
+              <a href="resources.html">Financial Calculator</a>
+          </li>
           <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
           <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
-          <li class="nav-item"><a class="nav-link" href="legal.html">Legal</a>
-              <div class="dropdown-menu">
-                  <a href="legal.html">Private Policies</a>
-                  <a href="Compliance.html">Compliance</a>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="legal.html" role="button" data-bs-toggle="dropdown">
+              Legal
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="legal.html">Private Policies</a></li>
+              <li><a class="dropdown-item" href="Compliance.html">Compliance</a></li>
+            </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
         </ul>

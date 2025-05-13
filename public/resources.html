@@ -253,7 +253,33 @@
       margin: 0 auto;
     }
     
+    .carousel-control-prev,
+.carousel-control-next {
+    width: auto;
+    padding: 0 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev {
+    left: -80px; /* Move more to the left */
+}
+
+.carousel-control-next {
+    right: -80px; /* Move more to the right */
+}
+.carousel-control-next-icon,.carousel-control-prev-icon{
+    background-color: black;
+    border-radius: 50%;
+    padding: 20px;
+    background-size: 100% 100%;
+    filter: drop-shadow(0 0 5px black);
+
+}
+
   </style>
+
+  
 </head>
 <body data-bs-spy="scroll" data-bs-target=".navbar">
   <div id="pageWrapper">
@@ -271,9 +297,13 @@
           <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+              <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a>
+                <div class="dropdown-menu">
+                  <a href="resources.html">Financial Calculator</a>
+              </li>
               <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
               <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
+              <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="legal.html" role="button" data-bs-toggle="dropdown">
                   Legal
@@ -548,6 +578,301 @@
           </div>
         </div>
       </section>
+
+      <body data-bs-spy="scroll" data-bs-target=".navbar">
+
+        <!-- ======================
+     Q & A / Video Guides
+====================== -->
+<section id="resources" class="section-padding">
+  <div class="container">
+    <div class="text-center" data-aos="fade-down">
+      <h1 class="display-4 fw-semibold">Q &amp; A / Videos</h1>
+      <div class="line"></div>
+      <p>Get all your questions answered and watch our video guides!</p>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO GUIDES (Carousel) -->
+<section id="video-guides" class="section-padding">
+  <div class="container">
+    <div id="videoCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- First Slide -->
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md-4">
+              <iframe width="100%" height="215" src="https://www.youtube.com/embed/wxO0MSX9-9M?si=OBwAJRLtt8O6zmqr"
+                      frameborder="0" allowfullscreen></iframe>
+              <h5 class="mt-3">Understanding Personal Finance</h5>
+            </div>
+            <div class="col-md-4">
+              <iframe width="100%" height="215" src="https://www.youtube.com/embed/AEyYoZENBWU?si=aVJkcjksq09iXtWO"
+                      frameborder="0" allowfullscreen></iframe>
+              <h5 class="mt-3">Investment Strategies Explained</h5>
+            </div>
+            <div class="col-md-4">
+              <iframe width="100%" height="215" src="https://www.youtube.com/embed/fIa-K-cN7xU?si=lq1k7xYOVf5fqIB_"
+                      frameborder="0" allowfullscreen></iframe>
+              <h5 class="mt-3">Budgeting for Beginners</h5>
+            </div>
+          </div>
+        </div>
+        <!-- Second Slide -->
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-4">
+              <iframe width="100%" height="215" src="https://www.youtube.com/embed/dUuOVMYk_GY?si=igr97LhcJ9VsB_qR"
+                      frameborder="0" allowfullscreen></iframe>
+              <h5 class="mt-3">Retirement Planning Basics</h5>
+            </div>
+            <div class="col-md-4">
+              <iframe width="100%" height="215" src="https://www.youtube.com/embed/U4KB5eSZSB0?si=rkfP3WQOUA-GCLt5"
+                      frameborder="0" allowfullscreen></iframe>
+              <h5 class="mt-3">Tax-Saving Tips</h5>
+            </div>
+            <div class="col-md-4">
+              <iframe width="100%" height="215" src="https://www.youtube.com/embed/ZifPzxIqqzE?si=kEOyIboZbGFawdlW"
+                      frameborder="0" allowfullscreen></iframe>
+              <h5 class="mt-3">Real Estate Investing 101</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#videoCarousel"
+              data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#videoCarousel"
+              data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="section-padding">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-12 text-center mb-4">
+        <h2 class="text-white">Frequently Asked Questions</h2>
+        <div class="line"></div>
+      </div>
+      <div class="col-md-8 offset-md-2">
+        <div class="accordion" id="faqAccordion">
+
+          <!-- Item 1 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="false"
+                      aria-controls="collapseOne">
+                What services does Ron Smithee provide?
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion"
+                 aria-labelledby="headingOne">
+              <div class="accordion-body">
+                Ron Smithee provides financial guidance, investment strategies, and business consulting services.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo">
+                How do you create a financial plan for clients?
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion"
+                 aria-labelledby="headingTwo">
+              <div class="accordion-body">
+                Each client’s situation is unique. We start by gathering all relevant financial details,
+                identifying key priorities, and then crafting a step-by-step strategy to achieve their goals.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree">
+                What should I do with my old 401(k)?
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion"
+                 aria-labelledby="headingThree">
+              <div class="accordion-body">
+                Consider rolling it over to an IRA, perform a Roth conversion for tax-free growth, or
+                explore other strategies based on your long-term goals.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFour"
+                      aria-expanded="false"
+                      aria-controls="collapseFour">
+                How do you help clients maximize tax efficiency?
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion"
+                 aria-labelledby="headingFour">
+              <div class="accordion-body">
+                We use strategies such as Roth conversions, tax-advantaged accounts, and smart asset
+                allocation to reduce liabilities and grow wealth.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFive"
+                      aria-expanded="false"
+                      aria-controls="collapseFive">
+                What types of insurance do you recommend?
+              </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion"
+                 aria-labelledby="headingFive">
+              <div class="accordion-body">
+                Depending on your needs, we may recommend life, disability, or long-term care insurance
+                to safeguard your financial future.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseSix"
+                      aria-expanded="false"
+                      aria-controls="collapseSix">
+                Can you help with estate planning?
+              </button>
+            </h2>
+            <div id="collapseSix" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion"
+                 aria-labelledby="headingSix">
+              <div class="accordion-body">
+                Yes—we partner with estate-planning attorneys to set up wills, trusts, and legal structures
+                that transfer wealth efficiently.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSeven">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseSeven"
+                      aria-expanded="false"
+                      aria-controls="collapseSeven">
+                What other professionals do you work with?
+              </button>
+            </h2>
+            <div id="collapseSeven" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion"
+                 aria-labelledby="headingSeven">
+              <div class="accordion-body">
+                We collaborate with CPAs, real-estate advisors, business consultants, and top lenders
+                for a full-service approach.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 8 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEight">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseEight"
+                      aria-expanded="false"
+                      aria-controls="collapseEight">
+                How can I book a consultation?
+              </button>
+            </h2>
+            <div id="collapseEight" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion"
+                 aria-labelledby="headingEight">
+              <div class="accordion-body">
+                Just visit our <a href="contact.html">Contact Us</a> page and fill out the form to schedule.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 9 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingNine">
+              <button class="accordion-button collapsed" type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseNine"
+                      aria-expanded="false"
+                      aria-controls="collapseNine">
+                Are your financial guides free?
+              </button>
+            </h2>
+            <div id="collapseNine" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion"
+                 aria-labelledby="headingNine">
+              <div class="accordion-body">
+                Yes—our basic guides are free, with premium consulting available as an upgrade.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+    
+        </script>
+    </body>
+            <section id="resources" class="section-padding">
+              <div class="container">
+                  <div class="text-center" data-aos="fade-down">
+                      <div class ="line"></div>
+                  </div>
+              </div>
+          </section>
       
       <!-- FOOTER -->
       <footer class="text-center py-4">
@@ -1003,6 +1328,213 @@
       </div>
     </div>
   </div>
+  
+  <!-- Expense Tracker Modal -->
+  <div class="modal fade" id="expenseTrackerModal" tabindex="-1" aria-labelledby="expenseTrackerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title" id="expenseTrackerModalLabel">Expense Tracker</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Instructions Panel -->
+          <div class="alert bg-dark border border-secondary text-light mb-4" role="alert">
+            <h6 class="alert-heading text-success"><i class="ri-information-line me-2"></i>How to Use This Expense Tracker</h6>
+            <ol class="mb-0 small">
+              <li>Add your expenses using the <strong>Add Expense</strong> form</li>
+              <li>View and filter your expenses in the <strong>Expense History</strong> section</li>
+              <li>Track your spending patterns with the <strong>Expense Summary</strong> visuals</li>
+              <li>Edit or delete expenses using the action buttons in the list</li>
+              <li>Your expenses are saved automatically for future sessions</li>
+            </ol>
+          </div>
+          
+          <!-- Expense Tracker Interface -->
+          <div class="row">
+            <!-- Left Side: Add Expense Form & Filters -->
+            <div class="col-md-5">
+              <!-- Add Expense Section -->
+              <div class="card bg-dark border-secondary mb-4">
+                <div class="card-header bg-success bg-opacity-25 text-white">
+                  <h5 class="mb-0"><i class="ri-add-circle-line me-2"></i>Add Expense</h5>
+                </div>
+                <div class="card-body">
+                  <form id="addExpenseForm">
+                    <div class="mb-3">
+                      <label for="expenseDescription" class="form-label">Description</label>
+                      <input type="text" class="form-control bg-dark border-secondary text-light" id="expenseDescription" placeholder="What did you spend on?" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="expenseAmount" class="form-label">Amount ($)</label>
+                      <input type="number" class="form-control bg-dark border-secondary text-light" id="expenseAmount" placeholder="How much did you spend?" step="0.01" min="0.01" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="expenseCategory" class="form-label">Category</label>
+                      <select class="form-select bg-dark border-secondary text-light" id="expenseCategory" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="food">🍔 Food & Dining</option>
+                        <option value="transportation">🚗 Transportation</option>
+                        <option value="entertainment">🎬 Entertainment</option>
+                        <option value="shopping">🛍️ Shopping</option>
+                        <option value="utilities">💡 Utilities</option>
+                        <option value="housing">🏠 Housing</option>
+                        <option value="healthcare">🏥 Healthcare</option>
+                        <option value="education">📚 Education</option>
+                        <option value="personal">👤 Personal</option>
+                        <option value="other">📦 Other</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="expenseDate" class="form-label">Date</label>
+                      <input type="date" class="form-control bg-dark border-secondary text-light" id="expenseDate" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="expenseNotes" class="form-label">Notes (Optional)</label>
+                      <textarea class="form-control bg-dark border-secondary text-light" id="expenseNotes" rows="2" placeholder="Any additional details..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-calc w-100">Add Expense</button>
+                  </form>
+                </div>
+              </div>
+              
+              <!-- Filter Section -->
+              <div class="card bg-dark border-secondary">
+                <div class="card-header bg-dark">
+                  <h5 class="mb-0 text-white-50"><i class="ri-filter-3-line me-2"></i>Filter Expenses</h5>
+                </div>
+                <div class="card-body">
+                  <form id="filterExpensesForm">
+                    <div class="mb-3">
+                      <label for="filterDateRange" class="form-label">Date Range</label>
+                      <select class="form-select bg-dark border-secondary text-light" id="filterDateRange">
+                        <option value="all">All Time</option>
+                        <option value="today" selected>Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                        <option value="year">This Year</option>
+                        <option value="custom">Custom Range</option>
+                      </select>
+                    </div>
+                    <div id="customDateRange" style="display: none;">
+                      <div class="row g-2 mb-3">
+                        <div class="col-6">
+                          <label for="filterStartDate" class="form-label">Start Date</label>
+                          <input type="date" class="form-control bg-dark border-secondary text-light" id="filterStartDate">
+                        </div>
+                        <div class="col-6">
+                          <label for="filterEndDate" class="form-label">End Date</label>
+                          <input type="date" class="form-control bg-dark border-secondary text-light" id="filterEndDate">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="filterCategory" class="form-label">Category</label>
+                      <select class="form-select bg-dark border-secondary text-light" id="filterCategory">
+                        <option value="all" selected>All Categories</option>
+                        <option value="food">🍔 Food & Dining</option>
+                        <option value="transportation">🚗 Transportation</option>
+                        <option value="entertainment">🎬 Entertainment</option>
+                        <option value="shopping">🛍️ Shopping</option>
+                        <option value="utilities">💡 Utilities</option>
+                        <option value="housing">🏠 Housing</option>
+                        <option value="healthcare">🏥 Healthcare</option>
+                        <option value="education">📚 Education</option>
+                        <option value="personal">👤 Personal</option>
+                        <option value="other">📦 Other</option>
+                      </select>
+                    </div>
+                    <div class="mb-3">
+                      <label for="filterMinAmount" class="form-label">Amount Range ($)</label>
+                      <div class="row g-2">
+                        <div class="col-6">
+                          <input type="number" class="form-control bg-dark border-secondary text-light" id="filterMinAmount" placeholder="Min" min="0">
+                        </div>
+                        <div class="col-6">
+                          <input type="number" class="form-control bg-dark border-secondary text-light" id="filterMaxAmount" placeholder="Max" min="0">
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-secondary w-100">Apply Filters</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Right Side: Expense List & Summary -->
+            <div class="col-md-7">
+              <!-- Summary Section -->
+              <div class="card bg-dark border-secondary mb-4">
+                <div class="card-header bg-success bg-opacity-25 text-white">
+                  <h5 class="mb-0"><i class="ri-pie-chart-line me-2"></i>Expense Summary</h5>
+                </div>
+                <div class="card-body">
+                  <div class="alert bg-dark text-light border border-secondary mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h6 class="mb-0">Total Expenses (Period):</h6>
+                      <span id="totalPeriodExpenses" class="text-danger fs-5">$0.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h6 class="mb-0">Average Daily Spending:</h6>
+                      <span id="averageDailyExpenses" class="text-warning fs-5">$0.00</span>
+                    </div>
+                  </div>
+                  
+                  <!-- Expense Chart -->
+                  <div class="mb-3">
+                    <h6 class="text-white-50 mb-2">Spending by Category</h6>
+                    <div class="chart-container" style="position: relative; height: 200px;">
+                      <canvas id="expenseCategoryChart"></canvas>
+                    </div>
+                  </div>
+                  
+                  <!-- Expense Trend -->
+                  <div>
+                    <h6 class="text-white-50 mb-2">Spending Trend</h6>
+                    <div class="chart-container" style="position: relative; height: 150px;">
+                      <canvas id="expenseTrendChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Expense List Section -->
+              <div class="card bg-dark border-secondary">
+                <div class="card-header bg-success bg-opacity-25 text-white d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0"><i class="ri-list-check me-2"></i>Expense History</h5>
+                  <span id="expenseCount" class="badge bg-success">0 expenses</span>
+                </div>
+                <div class="card-body p-0">
+                  <div class="list-group list-group-flush" id="expenseList">
+                    <!-- Expenses will be dynamically populated here -->
+                    <div class="text-center p-4 text-muted">
+                      <i class="ri-inbox-line d-block mb-3" style="font-size: 2rem;"></i>
+                      <p>No expenses to show. Add your first expense to get started!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer bg-dark border-secondary">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <button id="clearAllExpenses" class="btn btn-outline-danger btn-sm">
+                      <i class="ri-delete-bin-line me-1"></i>Clear All
+                    </button>
+                    <button id="exportExpenseData" class="btn btn-outline-success btn-sm">
+                      <i class="ri-download-line me-1"></i>Export Data
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-secondary">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="printExpenseReport" class="btn btn-outline-secondary">Print Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   
   <!-- JS Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,5 +1,12 @@
 /* FONTS */
-@import url("../css/clash-display.css");
+@import url("../website-project-csc131/assets/css/clash-display.css");
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
 /* VARIABLES (Dark Theme + Finance Green) */
 :root {
@@ -19,7 +26,8 @@
 
 /* RESET & HELPERS */
 body {
-    background-color: #121212; /* Dark background for the entire page */
+    background-color: #121212;
+    /*background-image: url("../website-project-csc131/assets/images/Background1.png"); /*background for the entire page */
     font-family: var(--font-base);
     line-height: 1.7;
     color: var(--c-body);
@@ -106,7 +114,7 @@ img {
 }
 
 .btn-brand {
-    background-color: var(--c-brand);
+    background-image: url("../website-project-csc131/assets/images/Background1.png");
     border-color: var(--c-brand);
     color: #fff;
 }
@@ -159,7 +167,7 @@ img {
     flex: none;
 }
 
-/* LEGAL */
+/* SERVICE */
 .service {
     position: relative;
     overflow: hidden;
@@ -188,44 +196,12 @@ img {
 
 .service:hover h5,
 .service:hover p {
-    color: #302e2e;
+    color: #fff;
 }
 
 .service:hover .iconbox {
     background-color: rgba(255, 255, 255, 0.2);
-    color: #474646;
-}
-
-.nav-item {
-         position: relative;
-         display: inline-block;
-        }
-
-.dropdown-menu {
-         display: none;
-         position: absolute;
-         background-color: rgb(164, 245, 140);
-         min-width: 150px;
-         box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-         z-index: 1;
-         padding: 5px 0;
-         border-radius: 5px;
-        }
-
-.dropdown-menu a {
-        color: black;
-        padding: 10px 15px;
-        text-decoration: none;
-        display: block;
-        }
-
-.dropdown-menu a:hover {
-        background-color: #979393;
-        }
-
-/* Show the dropdown when hovering */
-.nav-item:hover .dropdown-menu {
-  display: block;
+    color: #fff;
 }
 
 /* COUNTER */
@@ -234,7 +210,7 @@ img {
         rgba(var(--c-brand-rgb), 0.8), 
         rgba(var(--c-brand-rgb), 0.8)
     ), 
-    url("../images/chickenmoney.jpg");
+    url("../website-project-csc131/assets/images/counter.jpg");
     background-position: center;
     background-size: cover;
     color: #fff; /* White text on dark overlay */
@@ -314,7 +290,7 @@ img {
         rgba(var(--c-brand-rgb), 0.8), 
         rgba(var(--c-brand-rgb), 0.8)
     ), 
-    url("../images/counter.jpg");
+    url("../website-project-csc131/assets/images/counter.jpg");
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -387,164 +363,221 @@ footer .line {
     color: #fff;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-.reachUs-button {
-    padding: 1rem;
-    background-color: #0dac30;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.reachUs-button:hover{
-    background-color: #1ac840;
-}
-
-/* banner section styles */
-.banner {
-    text-align: center;
-    background-color: #ffffff;
-    margin: 0 auto;
-}
-
-.banner img {
-    max-width: 100%;
-    height: auto;
-}
-
-
-/* Contact form styles */
-.contact-form {
-    padding: 40px 0;
-    margin: 0 10px;
-}
-
-.form-container {
-    max-width: 40%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.contact-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-container label {
-    display:block;
-    font-weight: bold;
-}
-.form-container input, textarea{
+.wrapper {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 1rem;
-    resize: vertical;
+    max-width: 550px; /* Adjust width to match reference image */
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px; /* More rounded edges */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
-.submit-button {
-    padding: 10px 20px;
-    background-color: #0dac30;
-    border: none;
+ 
+ .wrapper header{
+     display: flex;
+     align-items: center;
+     padding: 25px 30px 10px;
+     justify-content: space-between;
+ }
+ header .current-date{
+     font-size: 1.45rem;
+     font-weight: 500;
+
+ }
+ header .icons span{
+     height: 38px;
+     width: 38px;
+     color: #e0d6d6;
+     font-size: 1.9rem;
+     margin: 0 1px;
+     cursor: pointer;
+     text-align: center;
+     line-height: 38px;
+     border-radius: 50%;
+     background: #f2f2f2;
+ }
+ header .icons span:hover{
+     background: #f2f2f2;
+ }
+ header .icon span:last-child{
+     margin-right: -10px;
+ }
+ 
+ 
+ /*Calendar Starts Here*/
+
+
+ .calendar .weeks {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #f7d9c4; /* Soft pastel header */
+    color: #5a3e36; /* Softer brown text */
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem; /* Make text easier to read */
+    text-transform: capitalize; /* Ensure weekday names look good */
+}
+
+.calendar .weeks li {
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+ 
+.calendar .weeks {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #f7d9c4; /* Soft pastel header */
+    color: #5a3e36; /* Softer brown text */
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem; /* Make text easier to read */
+    text-transform: capitalize; /* Ensure weekday names look good */
+}
+
+.calendar .weeks li {
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+ 
+ .calendar .weeks li{
+     font-weight: 500;
+ }
+ 
+ .calendar ul li{
+     position: relative;
+     width: calc(100% / 7);
+ }
+ 
+ .calendar .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Ensures a proper grid for 7 days */
+    gap: 5px; /* Adds spacing between cells */
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
+
+.calendar .days li {
+    width: 50px;
+    height: 50px;
+    background: #fafffc; /* Light background */
+    border-radius: 15px; /* More rounded look */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: 0.3s;
+    list-style-type: none; /* Prevents bullets */
+}
+ 
+ .days li.inactive{
+     color: #bfb8b8;
+ }
+ 
+ .days li.active{
+     color: black;
+     font-weight: bold;
+ }
+ 
+ .calendar .days li::before{
+     position: absolute;
+     content: "";
+     height: 40px;
+     width: 40px;
+     top: 50%;
+     left: 50%;
+     z-index: -1;
+     border-radius: 50%;
+     transform: translate(-50%, -50%);
+     background: transparent;
+ }
+ 
+ .days li:hover::before{
+     background: #b9bcb9;
+ }
+ 
+ .days li.active::before{
+     background: #c8cdc8;
+ }
+ /* Events */
+ .event-input {
+    margin-top: 20px;
+    padding: 10px;
+    background: #f7d9c4; /* Softer orange like the reference image */
+    border-radius: 10px;
+    text-align: center;
+}
+
+.event-input h3 {
+    font-size: 1.2rem;
+    color: #5a3e36; /* Softer brown */
+}
+
+.event-input input {
+    width: 80%;
+    padding: 8px;
+    border-radius: 10px; /* More rounded input */
+    border: 1px solid #ccc;
+}
+
+.event-input button {
+    padding: 8px 12px;
+    background: #d48c74; /* Light pastel red */
     color: white;
-    border-radius: 4px;
-    font-size: 1rem;
+    border: none;
+    border-radius: 10px; /* More rounded button */
+    cursor: pointer;
+}
+/*This is planner change*/
+.modal {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+.modal-content {
+    text-align: center;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5rem;
     cursor: pointer;
 }
 
-/* Contact info styles */
-.contact-info {
-    text-align: center;
-    padding: 50px 0;
-    background-color: #f7f7f7;
+.notes-section {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f7d9c4; /* Matching soft orange */
+    border-radius: 10px;
 }
 
-.contact-info h2 {
-    margin-bottom: 20px;
+.notes-section h2 {
+    font-size: 1.2rem;
+    color: #5a3e36;
 }
 
-
-/* Always set the map height explicitly to define the size of the div
- * element that contains the map. */
- gmp-map {
-    display: block;
-    width: 400px;      /* or whatever width you want */
-    height: 400px;
-    margin: 0 auto;    /* centers horizontally */
-  }
-
-  gmp-marker {
-    background: hotpink;
-    width: 24px;
-    height: 24px;
-    display: block;
-  }
-  
-  /* Optional: Makes the sample page fill the window. */
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* 1. The flex wrapper */
-.contact-container {
-  display: flex;
-  flex-wrap: wrap;       /* allows stacking on narrow screens */
-  gap: 2rem;             /* space between form & map */
-}
-
-/* 2. Form & map each take up equal space */
-.contactForm,
-.map-container {
-  flex: 1 1 300px;       /* grow & shrink, min‐width ~300px */
-}
-
-/* 3. Make sure the map fills its container */
-.map-container gmp-map {
-  display: block;        /* custom elements need block to size */
-  width: 100%;
-  height: 400px;         /* or whatever height you prefer */
-}
-
-/* 4. Optional: style the form */
-.contactForm form {
-  display: flex;
-  flex-direction: column;
-}
-.contactForm label {
-  margin-top: 1rem;
-}
-.contactForm input,
-.contactForm textarea {
-  padding: .5rem;
-  margin-top: .25rem;
-  font-size: 1rem;
-}
-.contactForm button {
-  margin-top: 1rem;
-  padding: .75rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-/* 5. Responsive tweak: stack vertically under 600px */
-@media (max-width: 600px) {
-  .contact-container {
-    flex-direction: column;
-  }
+#notes {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    resize: none;
+    background: #fceee5;
 }

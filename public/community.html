@@ -14,174 +14,190 @@
 
 <body data-bs-spy="scroll" data-bs-target=".navbar">
 
-    <!-- NAVBAR -->
+    <!-- MAIN NAVBAR (Your original header) -->
     <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="homepage.html">
-                <img src="./assets/images/Designer.png" alt="" width="100" height="50">
+    <div class="container">
+        <a class="navbar-brand" href="homepage.html">
+        <img src="./assets/images/Designer.png" alt="Logo" width="100" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a>
+            <div class="dropdown-menu">
+              <a href="resources.html">Financial Calculator</a>
+          </li>
+            <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
+            <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="legal.html" role="button" data-bs-toggle="dropdown">
+                Legal
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="homepage.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
-                    <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
-                    <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="legal.html">Legal</a>
-                        <div class="dropdown-menu">
-                            <a href="legal.html">Private Policies</a>
-                            <a href="Compliance.html">Compliance</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                  </ul>
-            </div>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="legal.html">Private Policies</a></li>
+                <li><a class="dropdown-item" href="Compliance.html">Compliance</a></li>
+            </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        </ul>
         </div>
+    </div>
     </nav>
 
     <!-- REVIEW -->
     <section id="reviews" class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center" data-aos="fade-down" data-aos-delay="150">
-                    <div class="section-title">
-                        <h1 class="display-4 fw-semibold">Community Engagement</h1>
-                        <div class="line"></div>
-                        <p>We love to craft digital experiances for brands rather than crap and more lorem ipsums and do crazy skills</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row gy-5 gx-4">
-                <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="150">
-                    <div class="review">
-                        <div class="review-head p-4 theme-shadow">
-                            <div class="text-warning">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                            </div>
-                            <p>Amazing theme ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum animi rerum ipsam impedit dicta voluptatem.</p>
-                        </div>
-                        <div class="review-person mt-4 d-flex align-items-center">
-                            <img class="rounded-circle" src="./assets/images/avatar-1.jpg" alt="">
-                            <div class="ms-3">
-                                <h5>Dianne Russell</h5>
-                                <small>UX Architect</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="250">
-                    <div class="review">
-                        <div class="review-head p-4 theme-shadow">
-                            <div class="text-warning">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                            </div>
-                            <p>Amazing theme ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum animi rerum ipsam impedit dicta voluptatem.</p>
-                        </div>
-                        <div class="review-person mt-4 d-flex align-items-center">
-                            <img class="rounded-circle" src="./assets/images/avatar-2.jpg" alt="">
-                            <div class="ms-3">
-                                <h5>Dianne Russell</h5>
-                                <small>UX Architect</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="350">
-                    <div class="review">
-                        <div class="review-head p-4 theme-shadow">
-                            <div class="text-warning">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                            </div>
-                            <p>Amazing theme ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum animi rerum ipsam impedit dicta voluptatem.</p>
-                        </div>
-                        <div class="review-person mt-4 d-flex align-items-center">
-                            <img class="rounded-circle" src="./assets/images/avatar-3.jpg" alt="">
-                            <div class="ms-3">
-                                <h5>Dianne Russell</h5>
-                                <small>UX Architect</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="450">
-                    <div class="review">
-                        <div class="review-head p-4 theme-shadow">
-                            <div class="text-warning">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                            </div>
-                            <p>Amazing theme ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum animi rerum ipsam impedit dicta voluptatem.</p>
-                        </div>
-                        <div class="review-person mt-4 d-flex align-items-center">
-                            <img class="rounded-circle" src="./assets/images/avatar-4.jpg" alt="">
-                            <div class="ms-3">
-                                <h5>Dianne Russell</h5>
-                                <small>UX Architect</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="550">
-                    <div class="review">
-                        <div class="review-head p-4 theme-shadow">
-                            <div class="text-warning">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                            </div>
-                            <p>Amazing theme ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum animi rerum ipsam impedit dicta voluptatem.</p>
-                        </div>
-                        <div class="review-person mt-4 d-flex align-items-center">
-                            <img class="rounded-circle" src="./assets/images/avatar-5.jpg" alt="">
-                            <div class="ms-3">
-                                <h5>Dianne Russell</h5>
-                                <small>UX Architect</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="650">
-                    <div class="review">
-                        <div class="review-head p-4 theme-shadow">
-                            <div class="text-warning">
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                            </div>
-                            <p>Amazing theme ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum animi rerum ipsam impedit dicta voluptatem.</p>
-                        </div>
-                        <div class="review-person mt-4 d-flex align-items-center">
-                            <img class="rounded-circle" src="./assets/images/avatar-6.jpg" alt="">
-                            <div class="ms-3">
-                                <h5>Dianne Russell</h5>
-                                <small>UX Architect</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="row">
+        <div class="col-12 text-center" data-aos="fade-down" data-aos-delay="150">
+            <div class="section-title">
+            <h1 class="display-4 fw-semibold">Testimonials</h1>
+            <div class="line"></div>
+            <p>Hear from clients who’ve transformed their financial lives with us</p>
             </div>
         </div>
+        </div>
+        <div class="row gy-5 gx-4">
+
+        <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="150">
+            <div class="review">
+            <div class="review-head p-4 theme-shadow">
+                <div class="text-warning">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                </div>
+                <p>"Ron Smithey’s financial planning guidance helped me save 30% more than expected for retirement. Their proactive approach is outstanding."</p>
+            </div>
+            <div class="review-person mt-4 d-flex align-items-center">
+                <img class="rounded-circle" src="./assets/images/avatar-1.jpg" alt="Jane Smith">
+                <div class="ms-3">
+                <h5>Jane Smith</h5>
+                <small>Retiree</small>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="250">
+            <div class="review">
+            <div class="review-head p-4 theme-shadow">
+                <div class="text-warning">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                </div>
+                <p>"As a small-business owner, their corporate solutions optimized my cash flow and improved my bottom line within six months."</p>
+            </div>
+            <div class="review-person mt-4 d-flex align-items-center">
+                <img class="rounded-circle" src="./assets/images/avatar-2.jpg" alt="Michael Johnson">
+                <div class="ms-3">
+                <h5>Michael Johnson</h5>
+                <small>CEO, MJ Tech</small>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="350">
+            <div class="review">
+            <div class="review-head p-4 theme-shadow">
+                <div class="text-warning">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                </div>
+                <p>"Their wealth management advice led to a 20% portfolio growth last year—far outperforming my previous advisor."</p>
+            </div>
+            <div class="review-person mt-4 d-flex align-items-center">
+                <img class="rounded-circle" src="./assets/images/avatar-3.jpg" alt="Emily Davis">
+                <div class="ms-3">
+                <h5>Emily Davis</h5>
+                <small>Entrepreneur</small>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="450">
+            <div class="review">
+            <div class="review-head p-4 theme-shadow">
+                <div class="text-warning">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                </div>
+                <p>"Their tax planning service saved me thousands this year—professional, responsive, and thorough."</p>
+            </div>
+            <div class="review-person mt-4 d-flex align-items-center">
+                <img class="rounded-circle" src="./assets/images/avatar-4.jpg" alt="David Lee">
+                <div class="ms-3">
+                <h5>David Lee</h5>
+                <small>CFO, BrightCorp</small>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="550">
+            <div class="review">
+            <div class="review-head p-4 theme-shadow">
+                <div class="text-warning">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                </div>
+                <p>"I attended their workshops and now feel empowered to manage my own investments—highly recommend their education resources."</p>
+            </div>
+            <div class="review-person mt-4 d-flex align-items-center">
+                <img class="rounded-circle" src="./assets/images/avatar-5.jpg" alt="Sarah Brown">
+                <div class="ms-3">
+                <h5>Sarah Brown</h5>
+                <small>High School Teacher</small>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="650">
+            <div class="review">
+            <div class="review-head p-4 theme-shadow">
+                <div class="text-warning">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                </div>
+                <p>"Their ongoing advisory has been invaluable—every meeting gives me clear, actionable steps to improve my finances."</p>
+            </div>
+            <div class="review-person mt-4 d-flex align-items-center">
+                <img class="rounded-circle" src="./assets/images/avatar-6.jpg" alt="Carlos Martinez">
+                <div class="ms-3">
+                <h5>Carlos Martinez</h5>
+                <small>Software Engineer</small>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
     </section>
+
 
     <!-- TEAM -->
     <section id="team" class="section-padding">
